@@ -10,8 +10,50 @@ using namespace std;
 GLuint renderingProgram;
 GLuint vao[numVAOS];
 
+
+void printShaderLog(GLuint shader) {
+    int len = 0;
+    int chWrittn = 0;
+    char* log;
+    glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &len);
+    if (len > 0) {
+        log = (char*)malloc(len);
+        glGetShaderInfoLog(shader, len, &chWrittn, log);
+        cout << "Shader Info Log: " << log << endl;
+        free(log);
+    }
+}
+
+void printProgramLog(int prog) {
+    int len = 0;
+    int chWrittn = 0;
+    char* log;
+    glGetProgramiv(prog, GL_INFO_LOG_LENGTH, &len);
+    if (len > 0) {
+        log = (char*)malloc(len);
+        glGetProgramInfoLog(prog, len, &chWrittn, log);
+        cout << "Program Info Log: " << log << endl;
+        free(log);
+    }
+}
+
+bool checkOpenGLError() {
+    bool foundError = false;
+    int glErr = glGetError();
+    while (glErr != GL_NO_ERROR) {
+        cout << "glError: " << glErr << endl;
+        foundError = true;
+        glErr = glGetError();
+    }
+    return foundError;
+}
+
 GLuint createShaderProgram()
 {
+    int vertComplied;
+    int fragComplied;
+    int linked;
+
     const char *vshaderSource =
         "#version 430 \n"
         "void main(void) \n"
@@ -21,7 +63,7 @@ GLuint createShaderProgram()
         "#version 430 \n"
         "out vec4 color; \n"
         "void main(void) \n"
-        "{ color = vec4(0.0, 0.0, 1.0, 1.0); }";
+        "{ if(gl_FragCoord.x < 640) color = vec4(1.0, 1.0, 0.0, 1.0); else color = vec4(0.0, 0.0, 1.0, 1.0); }";
 
     GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
     GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -30,12 +72,35 @@ GLuint createShaderProgram()
     glShaderSource(fShader, 1, &fshaderSource, NULL);
 
     glCompileShader(vShader);
+    checkOpenGLError();
+    glGetShaderiv(vShader, GL_COMPILE_STATUS, &vertComplied);
+    if (vertComplied != 1)
+    {
+        cout << "vertex complition failed" << endl;
+        printShaderLog(vShader);
+    }
+
     glCompileShader(fShader);
+    checkOpenGLError();
+    glGetShaderiv(fShader, GL_COMPILE_STATUS, &fragComplied);
+    if (vertComplied != 1)
+    {
+        cout << "fragment complition failed" << endl;
+        printShaderLog(fShader);
+    }
+
 
     GLuint vfProgram = glCreateProgram();
     glAttachShader(vfProgram, vShader);
     glAttachShader(vfProgram, fShader);
     glLinkProgram(vfProgram);
+    checkOpenGLError();
+    glGetProgramiv(vfProgram, GL_LINK_STATUS, &linked);
+    if (linked != 1)
+    {
+        cout << "linking failed" << endl;
+        printProgramLog(vfProgram);
+    }
 
     return vfProgram;
 }
@@ -51,6 +116,8 @@ void display(GLFWwindow* window, double currentTime) {
     //glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(renderingProgram);
+    glPointSize(30.0f);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //Ïß¿òÄ£ÐÍ
     glDrawArrays(GL_POINTS, 0, 1);
 }
 
