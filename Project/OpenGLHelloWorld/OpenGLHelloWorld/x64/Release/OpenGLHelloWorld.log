@@ -1,5 +1,6 @@
-﻿  正在生成代码
-  Previous IPDB not found, fall back to full compilation.
+﻿  main.cpp
+  正在生成代码
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
   All 3 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
-  OpenGLHelloWorld.vcxproj -> E:\OpenGL\Project\OpenGLHelloWorld\x64\Release\OpenGLHelloWorld.exe
+  OpenGLHelloWorld.vcxproj -> D:\OpenGL\Project\OpenGLHelloWorld\x64\Release\OpenGLHelloWorld.exe
