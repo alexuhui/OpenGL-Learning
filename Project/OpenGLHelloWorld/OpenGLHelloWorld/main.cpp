@@ -116,7 +116,7 @@ void display(GLFWwindow* window, double currentTime) {
     //glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(renderingProgram);
-    glPointSize(30.0f);
+    glPointSize(120.0f);
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //Ïß¿òÄ£ÐÍ
     glDrawArrays(GL_POINTS, 0, 1);
 }
