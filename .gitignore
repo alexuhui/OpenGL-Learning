@@ -1,6 +1,7 @@
 **/.vs/
 **/Debug/
 **/Release/
+*.vcxproj
 
 # Build results
 [Dd]ebug/
