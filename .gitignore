@@ -1,0 +1,10 @@
+**/.vs/
+**/Debug/
+**/Release/
+*.vcxproj
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
