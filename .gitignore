@@ -2,6 +2,8 @@
 **/Debug/
 **/Release/
 *.vcxproj
+**/x64/
+**/x86/
 
 # Build results
 [Dd]ebug/
