@@ -3,8 +3,12 @@
 out vec4 color;
 void main(void)
 { 
-	if(gl_FragCoord.x < 640) 
+	if(gl_FragCoord.x < 300) 
+		color = vec4(1.0, 0.0, 0.0, 1.0); 
+	else if(gl_FragCoord.x < 600) 
 		color = vec4(1.0, 1.0, 0.0, 1.0); 
+	else if(gl_FragCoord.x < 900) 
+		color = vec4(1.0, 1.0, 1.0, 1.0);
 	else 
 		color = vec4(0.0, 0.0, 1.0, 1.0); 
 }
