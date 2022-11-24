@@ -1,6 +1,8 @@
-#include <GL\glew.h>
+ï»¿#include <GL\glew.h>
 #include <GLFW\glfw3.h>
 #include <iostream>
+#include <fstream>
+#include <string>
 
 #define numVAOS 1
 
@@ -48,22 +50,39 @@ bool checkOpenGLError() {
     return foundError;
 }
 
+string readShaderSource(const char* filePath)
+{
+    string content;
+    ifstream fileStream(filePath, ios::in);
+    string line = "";
+    while (!fileStream.eof())
+    {
+        getline(fileStream, line);
+        content.append(line + "\n");
+    }
+    fileStream.close();
+    return content;
+}
+
 GLuint createShaderProgram()
 {
     int vertComplied;
     int fragComplied;
     int linked;
 
-    const char *vshaderSource =
-        "#version 430 \n"
-        "void main(void) \n"
-        "{ gl_Position = vec4(0.0, 0.0, 0.0, 1.0); }";
+    string vertShaderStr = readShaderSource(".\\GLSL\\vertShader.glsl");
+    const char* vshaderSource = vertShaderStr.c_str();
+    /*"#version 430 \n"
+    "void main(void) \n"
+    "{ gl_Position = vec4(0.0, 0.0, 0.0, 1.0); }";*/
 
-    const char* fshaderSource =
-        "#version 430 \n"
-        "out vec4 color; \n"
-        "void main(void) \n"
-        "{ if(gl_FragCoord.x < 640) color = vec4(1.0, 1.0, 0.0, 1.0); else color = vec4(0.0, 0.0, 1.0, 1.0); }";
+
+    string fragShaderStr = readShaderSource(".\\GLSL\\fragShader.glsl");
+    const char* fshaderSource = fragShaderStr.c_str();
+    /*"#version 430 \n"
+    "out vec4 color; \n"
+    "void main(void) \n"
+    "{ if(gl_FragCoord.x < 640) color = vec4(1.0, 1.0, 0.0, 1.0); else color = vec4(0.0, 0.0, 1.0, 1.0); }";*/
 
     GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
     GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -105,20 +124,32 @@ GLuint createShaderProgram()
     return vfProgram;
 }
 
-void init(GLFWwindow* window) { 
+void init(GLFWwindow* window) {
     renderingProgram = createShaderProgram();
     glGenVertexArrays(numVAOS, vao);
     glBindVertexArray(vao[0]);
 }
 
+float x = 0.0f;
+float inc = 0.01f;
+float dirInc = 0.01f;
 void display(GLFWwindow* window, double currentTime) {
-    //glClearColor(0.5, 0.5, 0.5, 1.0);
-    //glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_DEPTH_BITS);
+    glClearColor(0.5, 0.5, 0.5, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     glUseProgram(renderingProgram);
-    glPointSize(30.0f);
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //Ïß¿òÄ£ÐÍ
-    glDrawArrays(GL_POINTS, 0, 1);
+
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //ï¿½ß¿ï¿½Ä£ï¿½ï¿½
+    // glPointSize(120.0f);
+    //glDrawArrays(GL_POINTS, 0, 1); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+    x += dirInc;
+    if (x > 0.7) dirInc = -inc;
+    if (x < -0.7) dirInc = inc;
+    GLint offsetLoc = glGetUniformLocation(renderingProgram, "offset");
+    glProgramUniform1f(renderingProgram, offsetLoc, x);
+    glDrawArrays(GL_TRIANGLES, 0, 3); //ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½
 }
 
 int main(void) {
