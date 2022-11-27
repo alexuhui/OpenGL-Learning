@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include "Utils.h"
+#include "math.h"
 
 #define numVAOS 1
 
@@ -21,6 +22,8 @@ void init(GLFWwindow* window) {
 float x = 0.0f;
 float inc = 0.01f;
 float dirInc = 0.01f;
+float rotZ = 0.0f;
+float rotInc = 0.1f;
 void display(GLFWwindow* window, double currentTime) {
     glClear(GL_DEPTH_BITS);
     glClearColor(0.5, 0.5, 0.5, 1.0);
@@ -37,6 +40,11 @@ void display(GLFWwindow* window, double currentTime) {
     if (x < -0.7) dirInc = inc;
     GLint offsetLoc = glGetUniformLocation(renderingProgram, "offset");
     glProgramUniform1f(renderingProgram, offsetLoc, x);
+
+    rotZ = fmod(rotZ + rotInc, 3.14159f * 2.0f);
+    GLint rotZLoc = glGetUniformLocation(renderingProgram, "rotZ");
+    glProgramUniform1f(renderingProgram, rotZLoc, rotZ);
+
     glDrawArrays(GL_TRIANGLES, 0, 3); //draw triangles
 }
 
