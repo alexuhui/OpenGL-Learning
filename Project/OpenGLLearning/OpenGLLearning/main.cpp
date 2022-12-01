@@ -22,11 +22,12 @@ GLuint renderingProgram;
 GLuint vao[numVAOS];
 GLuint vbo[numVBOS];
 
-GLuint mvLoc, projLoc;
+GLuint mLoc, vLoc, mvLoc, projLoc, tfLoc;
 int width, height;
 float aspect;
 glm::mat4 pMat, vMat, mMat, mvMat;
 //glm::mat4 tMat, rMat;
+float timeFactor;
 
 void setupVertices(void) {    // 36个顶点，12个三角形，组成了放置在原点处的2×2×2立方体
     float vertexPositions[108] = {
@@ -56,7 +57,7 @@ void setupVertices(void) {    // 36个顶点，12个三角形，组成了放置�
 void init(GLFWwindow* window) {
     renderingProgram = Utils::createShaderProgram(".\\GLSL\\vertShader.glsl", ".\\GLSL\\fragShader.glsl");
 
-    cameraX = 0.0f; cameraY = 0.0f; cameraZ = 8.0f;
+    cameraX = 0.0f; cameraY = 0.0f; cameraZ = 408.0f;
     cubeLocX = 0.0f; cubeLocY = -2.0f; cubeLocZ = 0.0f;
 
     setupVertices();
@@ -87,7 +88,28 @@ void transformCube(GLint mvLoc, GLint projLoc, float tf)
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
-    glDrawArrays(GL_TRIANGLES, 0, 36); //draw triangles
+    glDrawArrays(GL_TRIANGLES, 0, 36000); //draw triangles
+}
+
+
+void transformCubeInstanced(GLint mLoc, GLint vLoc, GLint projLoc, float currentTime)
+{
+    glUniformMatrix4fv(mLoc, 1, GL_FALSE, glm::value_ptr(mMat));
+    glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(vMat));
+    glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
+
+    tfLoc = glGetUniformLocation(renderingProgram, "tf");
+    timeFactor = currentTime;
+    glUniform1f(tfLoc, timeFactor);
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(0);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 24);
 }
 
 void display(GLFWwindow* window, double currentTime) {
@@ -95,7 +117,9 @@ void display(GLFWwindow* window, double currentTime) {
     glClear(GL_COLOR_BUFFER_BIT);
     glUseProgram(renderingProgram);
 
-    mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
+    mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
+    vLoc = glGetUniformLocation(renderingProgram, "v_matrix");
+    //mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
 
     glfwGetFramebufferSize(window, &width, &height);
@@ -103,13 +127,14 @@ void display(GLFWwindow* window, double currentTime) {
     pMat = glm::perspective(1.0472f, aspect, 0.1f, 1000.0f); // 1.0472 radians = 60 degrees
 
     vMat = glm::translate(glm::mat4(1.0f), glm::vec3(- cameraX, - cameraY, - cameraZ));
-    //mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
+    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
     //transformCube(mvLoc, projLoc, currentTime);
-    for (int i = 0; i < 24; i++)
+    /*for (int i = 0; i < 24; i++)
     {
         float tf = currentTime + i;
         transformCube(mvLoc, projLoc, tf);
-    }
+    }*/
+    transformCubeInstanced(mLoc,vLoc, projLoc, currentTime);
 }
 
 int main(void) {
