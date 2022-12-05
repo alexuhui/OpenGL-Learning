@@ -20,16 +20,20 @@ mat4 buildTranslate(float x, float y, float z);
 void main(void)
 { 
 	float i = gl_InstanceID + tf;
-	float a = sin(203.0 * i / 8000) * 403.0;
-	float b = sin(301.0 * i / 8000) * 401.0;
-	float c = sin(400.0 * i / 8000) * 405.0;
+	float a = sin(203.0 * i / 8000.0) * 403.0;
+	float b = sin(301.0 * i / 4001.0) * 401.0;
+	float c = sin(400.0 * i / 6003.0) * 405.0;
+
+//    float a = sin(2.0 * i) * 8.0;
+//    float b = sin(3.0 * i) * 8.0;
+//    float c = sin(4.0 * i) * 8.0;
 
 	mat4 localRotX = buildRotateX(1000*i);
 	mat4 localRotY = buildRotateY(1000*i);
 	mat4 localRotZ = buildRotateZ(1000*i);
 	mat4 localTrans = buildTranslate(a, b, c);
 
-	mat4 newM_matrix = m_matrix * localTrans * localRotX * localRotY * localRotZ;
+	mat4 newM_matrix = /*m_matrix */ localTrans * localRotX * localRotY * localRotZ;
 	mat4 mv_matrix = v_matrix * newM_matrix;
 
 	vec4 pos = vec4(position, 1.0);

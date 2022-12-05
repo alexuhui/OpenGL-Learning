@@ -57,7 +57,7 @@ void setupVertices(void) {    // 36个顶点，12个三角形，组成了放置�
 void init(GLFWwindow* window) {
     renderingProgram = Utils::createShaderProgram(".\\GLSL\\vertShader.glsl", ".\\GLSL\\fragShader.glsl");
 
-    cameraX = 0.0f; cameraY = 0.0f; cameraZ = 408.0f;
+    cameraX = 0.0f; cameraY = 0.0f; cameraZ = 420.0f;
     cubeLocX = 0.0f; cubeLocY = -2.0f; cubeLocZ = 0.0f;
 
     setupVertices();
@@ -109,7 +109,7 @@ void transformCubeInstanced(GLint mLoc, GLint vLoc, GLint projLoc, float current
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
-    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 24);
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 100000);
 }
 
 void display(GLFWwindow* window, double currentTime) {
@@ -117,7 +117,7 @@ void display(GLFWwindow* window, double currentTime) {
     glClear(GL_COLOR_BUFFER_BIT);
     glUseProgram(renderingProgram);
 
-    mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
+    //mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
     vLoc = glGetUniformLocation(renderingProgram, "v_matrix");
     //mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
@@ -134,7 +134,7 @@ void display(GLFWwindow* window, double currentTime) {
         float tf = currentTime + i;
         transformCube(mvLoc, projLoc, tf);
     }*/
-    transformCubeInstanced(mLoc,vLoc, projLoc, currentTime);
+    transformCubeInstanced(mLoc,vLoc, projLoc, (float)currentTime);
 }
 
 int main(void) {
