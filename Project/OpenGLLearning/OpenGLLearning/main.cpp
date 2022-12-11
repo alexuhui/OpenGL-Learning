@@ -17,6 +17,7 @@ using namespace std;
 
 float cameraX, cameraY, cameraZ;
 float cubeLocX, cubeLocY, cubeLocZ;
+float pyramidLocX, pyramidLocY, pyramidLocZ;
 
 GLuint renderingProgram;
 GLuint vao[numVAOS];
@@ -30,7 +31,7 @@ glm::mat4 pMat, vMat, mMat, mvMat;
 float timeFactor;
 
 void setupVertices(void) {    // 36个顶点，12个三角形，组成了放置在原点处的2×2×2立方体
-    float vertexPositions[108] = {
+    float cubeVertPositions[108] = {
        -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f,
        1.0f, -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f,
        1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f, -1.0f,
@@ -45,12 +46,24 @@ void setupVertices(void) {    // 36个顶点，12个三角形，组成了放置�
        1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f
     };
 
+    float pyramidVertPositions[54] = {
+       -1.0f, -1.0f, 1.0f,      1.0f, -1.0f, 1.0f,      0.0f, 1.0f, 0.0f,
+       1.0f, -1.0f, 1.0f,       1.0f, -1.0f, -1.0f,     0.0f, 1.0f, 0.0f,
+       1.0f, -1.0f, -1.0f,      -1.0f, -1.0f, -1.0f,    0.0f, 1.0f, 0.0f,
+       -1.0f, -1.0f, -1.0f,     -1.0f, -1.0f, 1.0f,     0.0f, 1.0f, 0.0f,
+       -1.0f, -1.0f, -1.0f,     1.0f, -1.0f, 1.0f,      -1.0f, -1.0f, 1.0f,
+       1.0f, -1.0f, 1.0f,       -1.0f, -1.0f, -1.0f,    1.0f, -1.0f, -1.0f,
+    };
+
     glGenVertexArrays(1, vao);
     glBindVertexArray(vao[0]);
     glGenBuffers(numVBOS, vbo);
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertPositions), cubeVertPositions, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidVertPositions), pyramidVertPositions, GL_STATIC_DRAW);
 }
 
 
@@ -59,6 +72,7 @@ void init(GLFWwindow* window) {
 
     cameraX = 0.0f; cameraY = 0.0f; cameraZ = 420.0f;
     cubeLocX = 0.0f; cubeLocY = -2.0f; cubeLocZ = 0.0f;
+    pyramidLocX = 0.0f; pyramidLocY = -2.0f; pyramidLocZ = 0.0f;
 
     setupVertices();
 }
@@ -109,7 +123,27 @@ void transformCubeInstanced(GLint mLoc, GLint vLoc, GLint projLoc, float current
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
-    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 100000);
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 10000);
+}
+
+void transformPyramidInstanced(GLint mLoc, GLint vLoc, GLint projLoc, float currentTime)
+{
+    glUniformMatrix4fv(mLoc, 1, GL_FALSE, glm::value_ptr(mMat));
+    glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(vMat));
+    glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
+
+    tfLoc = glGetUniformLocation(renderingProgram, "tf");
+    timeFactor = currentTime;
+    glUniform1f(tfLoc, timeFactor);
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(0);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 18, 10000);
 }
 
 void display(GLFWwindow* window, double currentTime) {
@@ -125,16 +159,13 @@ void display(GLFWwindow* window, double currentTime) {
     glfwGetFramebufferSize(window, &width, &height);
     aspect = (float)width / (float)height;
     pMat = glm::perspective(1.0472f, aspect, 0.1f, 1000.0f); // 1.0472 radians = 60 degrees
-
     vMat = glm::translate(glm::mat4(1.0f), glm::vec3(- cameraX, - cameraY, - cameraZ));
+
     mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
-    //transformCube(mvLoc, projLoc, currentTime);
-    /*for (int i = 0; i < 24; i++)
-    {
-        float tf = currentTime + i;
-        transformCube(mvLoc, projLoc, tf);
-    }*/
-    transformCubeInstanced(mLoc,vLoc, projLoc, (float)currentTime);
+    //transformCubeInstanced(mLoc,vLoc, projLoc, (float)currentTime);
+
+    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(pyramidLocX, pyramidLocY, pyramidLocZ));
+    transformPyramidInstanced(mLoc, vLoc, projLoc, (float)currentTime);
 }
 
 int main(void) {
