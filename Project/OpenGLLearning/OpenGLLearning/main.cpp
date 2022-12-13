@@ -70,7 +70,7 @@ void setupVertices(void) {    // 36个顶点，12个三角形，组成了放置�
 void init(GLFWwindow* window) {
     renderingProgram = Utils::createShaderProgram(".\\GLSL\\vertShader.glsl", ".\\GLSL\\fragShader.glsl");
 
-    cameraX = 0.0f; cameraY = 0.0f; cameraZ = 420.0f;
+    cameraX = 0.0f; cameraY = 0.0f; cameraZ = 300.0f;
     cubeLocX = 0.0f; cubeLocY = -2.0f; cubeLocZ = 0.0f;
     pyramidLocX = 0.0f; pyramidLocY = -2.0f; pyramidLocZ = 0.0f;
 
@@ -162,10 +162,10 @@ void display(GLFWwindow* window, double currentTime) {
     vMat = glm::translate(glm::mat4(1.0f), glm::vec3(- cameraX, - cameraY, - cameraZ));
 
     mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
-    //transformCubeInstanced(mLoc,vLoc, projLoc, (float)currentTime);
+    transformCubeInstanced(mLoc,vLoc, projLoc, (float)currentTime);
 
     mMat = glm::translate(glm::mat4(1.0f), glm::vec3(pyramidLocX, pyramidLocY, pyramidLocZ));
-    transformPyramidInstanced(mLoc, vLoc, projLoc, (float)currentTime);
+    transformPyramidInstanced(mLoc, vLoc, projLoc, (float)currentTime+0.5);
 }
 
 int main(void) {
