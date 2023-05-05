@@ -36,6 +36,9 @@
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -47,6 +50,9 @@
     <ClInclude Include="src\painter\painter_2_2_draw_point.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
+    <ClInclude Include="src\painter\painter_2_5_draw_triangle.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader\s_2_2_draw_point_frag.glsl">
@@ -55,5 +61,10 @@
     <Text Include="shader\s_2_2_draw_point_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\s_2_5_draw_triangle_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

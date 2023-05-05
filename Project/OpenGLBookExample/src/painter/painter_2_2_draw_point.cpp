@@ -1,17 +1,12 @@
 #include "painter_2_2_draw_point.h"
 
-
-#include <stdio.h>
-#include <io.h>
-//#include <string>
-
 #define numVAOs 1
 
-GLuint renderingProgram;
-GLuint vao[numVAOs];
+GLuint static renderingProgram;
+GLuint static vao[numVAOs];
 
-const char* vert = "./shader/s_2_2_draw_point_vert.glsl";
-const char* frag = "./shader/s_2_2_draw_point_frag.glsl";
+static const char* vert = "./shader/s_2_2_draw_point_vert.glsl";
+static const char* frag = "./shader/s_2_2_draw_point_frag.glsl";
 
 const char* Painter_2_2::getTitle()
 {

@@ -29,6 +29,10 @@ void Painter::display(GLFWwindow* window, double currentTime)
 
 GLuint Painter::createShaderProgram(const char* vert, const char* frag)
 {
+    GLint vertCompiled;
+    GLint fragCompiled;
+    GLint linked;
+
     const char* vshaderSource = readShaderSource(vert);
     const char* fshaderSource = readShaderSource(frag);
 
@@ -37,13 +41,36 @@ GLuint Painter::createShaderProgram(const char* vert, const char* frag)
 
     glShaderSource(vShader, 1, &vshaderSource, NULL);
     glShaderSource(fShader, 1, &fshaderSource, NULL);
+    
     glCompileShader(vShader);
+    // 捕获编译着色器时的错误
+    checkOpenGLError();
+    glGetShaderiv(vShader, GL_COMPILE_STATUS, &vertCompiled);
+    if (vertCompiled != 1) {
+        cout << "vertex compilation failed : " << vert << endl;
+        printShaderLog(vShader);
+    }
     glCompileShader(fShader);
+    // 捕获编译着色器时的错误
+    checkOpenGLError();
+    glGetShaderiv(fShader, GL_COMPILE_STATUS, &fragCompiled);
+    if (fragCompiled != 1) {
+        cout << "fragment compilation failed : " << frag << endl;
+        printShaderLog(fShader);
+    }
 
     GLuint vfProgram = glCreateProgram();
     glAttachShader(vfProgram, vShader);
     glAttachShader(vfProgram, fShader);
     glLinkProgram(vfProgram);
+
+    // 捕获链接着色器时的错误
+    checkOpenGLError();
+    glGetProgramiv(vfProgram, GL_LINK_STATUS, &linked);
+    if (linked != 1) {
+        cout << "linking failed, vert : " << vert << " frag : " << frag << endl;
+        printProgramLog(vfProgram);
+    }
 
     return vfProgram;
 }
@@ -52,6 +79,12 @@ const char* Painter::readShaderSource(const char* filePath)
 {
     string content;
     ifstream fileStream(filePath, ios::in);
+    if (fileStream.fail())
+    {
+        cout << "read file failed : " << filePath << endl << endl;
+        return "";
+    }
+
     string line = "";
     while (!fileStream.eof())
     {
