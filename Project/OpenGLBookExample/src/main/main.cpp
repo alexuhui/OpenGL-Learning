@@ -23,9 +23,12 @@ int main(void) {
 
         if (chapter == 2)
         {
-            if (section == 1){painter = new Painter_2_1(); draw();}
-            else if (section == 2){painter = new Painter_2_2(); draw();}
+            if (section == 1) { painter = new Painter_2_1(); draw(); continue;}
+            else if (section == 2){painter = new Painter_2_2(); draw();continue;}
         }
+
+        cout << "Example " << chapter << "."  << section << " not exist..." << endl;
+        cout << endl;
     }
 }
 
