@@ -12,8 +12,6 @@ void Painter_4_1::initWin(GLFWwindow* window)
 {
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    cameraX = 0.0f; cameraY = 0.0f; cameraZ = 8.0f;
-    cubeLocX = 0.0f; cubeLocY = -2.0f; cubeLocZ = 0.0f; // 沿Y轴下移以展示透视
     setupVertices(vertexPositions, sizeof(vertexPositions));
 }
 
@@ -36,17 +34,34 @@ void Painter_4_1::display(GLFWwindow* window, double currentTime)
 
     // 构建视图矩阵、模型矩阵和视图-模型矩阵
     vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraX, -cameraY, -cameraZ));
+    
+    //绘制单个cube
+    //drawCube(currentTime, 2.0f);
+    //绘制多个cube
+    for (int i = 0; i < 72; i++)
+    {
+        drawCube(currentTime * 1.0f + i * 0.5f, 10.0f);
+    }
+}
+
+void Painter_4_1::drawCube(double timeFactor, float tranFactor)
+{
     //只计算了固定位移变换矩阵
     //mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
 
     //平移变换  使用当前时间来计算x，y和z的不同变换
-    tMat = glm::translate(glm::mat4(1.0f), glm::vec3(sin(0.35f * currentTime) * 2.0f, cos(0.52f * currentTime) * 2.0f, sin(0.7f * currentTime) * 2.0f));
+    tMat = glm::translate(glm::mat4(1.0f), 
+        glm::vec3(sin(0.35f * timeFactor) * tranFactor,
+            cos(0.52f * timeFactor) * tranFactor,
+            sin(0.7f * timeFactor) * tranFactor * 2.0f));
+
     //旋转变换 用1.75来调整旋转速度
-    rMat = glm::rotate(glm::mat4(1.0f), 1.75f * (float)currentTime, glm::vec3(0.0f, 1.0f, 0.0f));
-    rMat = glm::rotate(rMat, 1.75f * (float)currentTime, glm::vec3(1.0f, 0.0f, 0.0f));
-    rMat = glm::rotate(rMat, 1.75f * (float)currentTime, glm::vec3(0.0f, 0.0f, 1.0f)); 
+    float rot = 0.175f * (float)timeFactor;
+    rMat = glm::rotate(glm::mat4(1.0f), rot, glm::vec3(0.0f, 1.0f, 0.0f));
+    rMat = glm::rotate(rMat, rot, glm::vec3(1.0f, 0.0f, 0.0f));
+    rMat = glm::rotate(rMat, rot, glm::vec3(0.0f, 0.0f, 1.0f));
     //缩放变换
-    float scale = 0.65f + sin(2.0f * currentTime) * 0.5f;
+    float scale = 1;// 0.75f + sin(timeFactor) * 0.25f;
     sMat = glm::scale(glm::mat4(1.0f), glm::vec3(scale, scale, scale));
 
     //模型矩阵(组合 平移 旋转 缩放变换)

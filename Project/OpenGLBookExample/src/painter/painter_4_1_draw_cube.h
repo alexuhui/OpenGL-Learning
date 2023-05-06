@@ -9,6 +9,7 @@ public:
 	void initWin(GLFWwindow* window);
 	void display(GLFWwindow* window, double currentTime);
 
+    void drawCube(double currentTime, float tranFactor);
     int getWidth();
     int getHeight();
 
@@ -28,7 +29,7 @@ private:
         1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f
 	};
 
-    float cameraX = 0.0f, cameraY = 0.0f, cameraZ = 8.0f;
+    float cameraX = 0.0f, cameraY = 0.0f, cameraZ = 40.0f;
     float cubeLocX = 0.0f, cubeLocY = -2.0f, cubeLocZ = 0.0f;
     
     int width = 0, height = 0;
