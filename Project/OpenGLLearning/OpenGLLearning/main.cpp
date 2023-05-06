@@ -151,7 +151,7 @@ void display(GLFWwindow* window, double currentTime) {
     glClear(GL_COLOR_BUFFER_BIT);
     glUseProgram(renderingProgram);
 
-    //mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
+    mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
     vLoc = glGetUniformLocation(renderingProgram, "v_matrix");
     //mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
@@ -164,8 +164,8 @@ void display(GLFWwindow* window, double currentTime) {
     mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
     transformCubeInstanced(mLoc,vLoc, projLoc, (float)currentTime);
 
-    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(pyramidLocX, pyramidLocY, pyramidLocZ));
-    transformPyramidInstanced(mLoc, vLoc, projLoc, (float)currentTime+0.5);
+    /*mMat = glm::translate(glm::mat4(1.0f), glm::vec3(pyramidLocX, pyramidLocY, pyramidLocZ));
+    transformPyramidInstanced(mLoc, vLoc, projLoc, (float)currentTime+0.5);*/
 }
 
 int main(void) {

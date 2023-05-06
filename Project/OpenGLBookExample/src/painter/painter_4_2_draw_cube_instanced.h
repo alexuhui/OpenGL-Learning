@@ -34,7 +34,7 @@ private:
     int width = 0, height = 0;
     float aspect = 1.0f;
 
-    GLuint vLoc{}, projLoc{}, tfLoc{};
+    GLuint mLoc{}, vLoc{}, projLoc{}, tfLoc{};
     glm::mat4 tMat{}, rMat{}, sMat{};
     glm::mat4 pMat{}, vMat{}, mMat{}, mvMat{};
 };

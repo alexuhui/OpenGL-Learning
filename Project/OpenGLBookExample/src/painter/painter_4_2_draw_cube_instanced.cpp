@@ -2,7 +2,7 @@
 
 void Painter_4_2::init()
 {
-    title = "Example 4.1";
+    title = "Example 4.2";
 
     vert = "./shader/s_4_2_draw_cube_vert_instanced.glsl";
     frag = "./shader/s_4_1_draw_cube_frag.glsl";
@@ -24,6 +24,7 @@ void Painter_4_2::display(GLFWwindow* window, double currentTime)
     glUseProgram(renderingProgram);
 
     // 获取MV矩阵和投影矩阵的统一变量
+    mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
     vLoc = glGetUniformLocation(renderingProgram, "v_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
 
@@ -35,12 +36,15 @@ void Painter_4_2::display(GLFWwindow* window, double currentTime)
     // 构建视图矩阵、模型矩阵和视图-模型矩阵
     vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraX, -cameraY, -cameraZ));
     
+    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
+    glUniformMatrix4fv(mLoc, 1, GL_FALSE, glm::value_ptr(mMat));
     // 构建（和变换）mMat的计算被移动到顶点着色器中去了
     // 在 C++ 应用程序中不再需要构建MV矩阵
     glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(vMat));   // 着色器需要视图矩阵的统一变量
     float timeFactor = ((float)currentTime);                             // 为了获得时间因子信息
     tfLoc = glGetUniformLocation(renderingProgram, "timeFactor");          // （着色器也需要它）
     glUniform1f(tfLoc, (float)timeFactor);
+    glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
 
     // 将VBO关联给顶点着色器中相应的顶点属性
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
