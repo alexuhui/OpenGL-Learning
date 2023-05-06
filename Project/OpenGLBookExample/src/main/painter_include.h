@@ -4,3 +4,4 @@
 #include "../painter/painter_2_2_draw_point.h"
 #include "../painter/painter_2_5_draw_triangle.h"
 #include "../painter/painter_2_6_draw_triangle_ani.h"
+#include "../painter/painter_4_1_draw_cube.h"

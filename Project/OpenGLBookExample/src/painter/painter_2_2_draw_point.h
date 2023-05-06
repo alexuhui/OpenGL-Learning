@@ -12,5 +12,6 @@ public:
 protected:
 
 private:
-
+	float size = 30.0f;
+	float inc = 1.0f;
 };

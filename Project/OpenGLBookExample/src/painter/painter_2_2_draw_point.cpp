@@ -17,7 +17,14 @@ void Painter_2_2::initWin(GLFWwindow* window)
 
 void Painter_2_2::display(GLFWwindow* window, double currentTime)
 {
+    glClear(GL_COLOR_BUFFER_BIT);
+
     glUseProgram(renderingProgram);
-    glPointSize(30.0f);
+
+    if (size < 20) inc = 1.0f;
+    else if (size > 80) inc = -1.0f;
+
+    size += inc;
+    glPointSize(size);
     glDrawArrays(GL_POINTS, 0, 1);
 }

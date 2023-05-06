@@ -27,6 +27,10 @@ int main(void) {
             else if (section == 5) { painter = new Painter_2_5(); draw(); continue; }
             else if (section == 6 ){painter = new Painter_2_6(); draw();continue;}
         }
+        else if(chapter == 4)
+        {
+            if (section == 1) { painter = new Painter_4_1(); draw(); continue; }
+        }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;
         cout << endl;
@@ -39,7 +43,7 @@ void draw()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
-    GLFWwindow* window = glfwCreateWindow(890, 540, painter->getTitle(), NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(painter->getWidth(), painter->getHeight(), painter->getTitle(), NULL, NULL);
 
     glfwMakeContextCurrent(window);
     if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }

@@ -139,6 +139,7 @@
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp" />
     <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp" />
     <ClCompile Include="src\painter\painter_2_6_draw_triangle_ani.cpp" />
+    <ClCompile Include="src\painter\painter_4_1_draw_cube.cpp" />
     <ClCompile Include="src\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,11 +160,14 @@
     <ClInclude Include="src\painter\painter_2_2_draw_point.h" />
     <ClInclude Include="src\painter\painter_2_5_draw_triangle.h" />
     <ClInclude Include="src\painter\painter_2_6_draw_triangle_ani.h" />
+    <ClInclude Include="src\painter\painter_4_1_draw_cube.h" />
     <ClInclude Include="src\utils\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
+    <None Include="shader\s_4_1_draw_cube_frag.glsl" />
+    <None Include="shader\s_4_1_draw_cube_vert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
