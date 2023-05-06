@@ -10,7 +10,7 @@ void Painter_2_6::init()
 
 void Painter_2_6::initWin(GLFWwindow* window)
 {
-    renderingProgram = createShaderProgram(vert, frag);
+    renderingProgram = Utils::createShaderProgram(vert, frag);
     glGenVertexArrays(numVAOs, vao);
     glBindVertexArray(vao[0]);
 }
