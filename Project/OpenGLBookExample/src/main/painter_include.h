@@ -5,3 +5,4 @@
 #include "../painter/painter_2_5_draw_triangle.h"
 #include "../painter/painter_2_6_draw_triangle_ani.h"
 #include "../painter/painter_4_1_draw_cube.h"
+#include "../painter/painter_4_2_draw_cube_instanced.h"

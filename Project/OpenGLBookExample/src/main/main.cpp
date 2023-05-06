@@ -30,6 +30,7 @@ int main(void) {
         else if(chapter == 4)
         {
             if (section == 1) { painter = new Painter_4_1(); draw(); continue; }
+            if (section == 2) { painter = new Painter_4_2(); draw(); continue; }
         }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;
