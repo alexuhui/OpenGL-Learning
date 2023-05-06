@@ -14,12 +14,17 @@ Painter::~Painter()
 
 const char* Painter::getTitle()
 {
-    return "Example";
+    return title;
 }
 
-void Painter::init(GLFWwindow* window)
+void Painter::init()
 {
     cout << "Painter init" << endl;
+}
+
+void Painter::initWin(GLFWwindow* window)
+{
+    cout << "Painter initWin" << endl;
 }
 
 void Painter::display(GLFWwindow* window, double currentTime)
@@ -27,14 +32,14 @@ void Painter::display(GLFWwindow* window, double currentTime)
     cout << "Painter display" << endl;
 }
 
-GLuint Painter::createShaderProgram(const char* vert, const char* frag)
+GLuint Painter::createShaderProgram(const char* vertShader, const char* fragShader)
 {
     GLint vertCompiled;
     GLint fragCompiled;
     GLint linked;
 
-    const char* vshaderSource = readShaderSource(vert);
-    const char* fshaderSource = readShaderSource(frag);
+    const char* vshaderSource = readShaderSource(vertShader);
+    const char* fshaderSource = readShaderSource(fragShader);
 
     GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
     GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -47,7 +52,7 @@ GLuint Painter::createShaderProgram(const char* vert, const char* frag)
     checkOpenGLError();
     glGetShaderiv(vShader, GL_COMPILE_STATUS, &vertCompiled);
     if (vertCompiled != 1) {
-        cout << "vertex compilation failed : " << vert << endl;
+        cout << "vertex compilation failed : " << vertShader << endl;
         printShaderLog(vShader);
     }
     glCompileShader(fShader);
@@ -55,7 +60,7 @@ GLuint Painter::createShaderProgram(const char* vert, const char* frag)
     checkOpenGLError();
     glGetShaderiv(fShader, GL_COMPILE_STATUS, &fragCompiled);
     if (fragCompiled != 1) {
-        cout << "fragment compilation failed : " << frag << endl;
+        cout << "fragment compilation failed : " << fragShader << endl;
         printShaderLog(fShader);
     }
 
@@ -68,7 +73,7 @@ GLuint Painter::createShaderProgram(const char* vert, const char* frag)
     checkOpenGLError();
     glGetProgramiv(vfProgram, GL_LINK_STATUS, &linked);
     if (linked != 1) {
-        cout << "linking failed, vert : " << vert << " frag : " << frag << endl;
+        cout << "linking failed, vertShader : " << vertShader << " fragShader : " << fragShader << endl;
         printProgramLog(vfProgram);
     }
 

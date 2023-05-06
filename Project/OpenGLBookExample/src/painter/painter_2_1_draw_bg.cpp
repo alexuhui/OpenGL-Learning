@@ -2,9 +2,9 @@
 #include "painter_2_1_draw_bg.h"
 
 
-const char* Painter_2_1::getTitle()
+void Painter_2_1::init()
 {
-	return "Example 2.1";
+	title = "Example 2.1";
 }
 
 void Painter_2_1::display(GLFWwindow* window, double currentTime)

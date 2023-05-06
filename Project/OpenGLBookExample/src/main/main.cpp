@@ -1,8 +1,6 @@
 #include <iostream>
 
-#include "../painter/painter_2_1_draw_bg.h"
-#include "../painter/painter_2_2_draw_point.h"
-#include "../painter/painter_2_5_draw_triangle.h"
+#include "painter_include.h"
 
 using namespace std;
 
@@ -26,7 +24,8 @@ int main(void) {
         {
             if (section == 1) { painter = new Painter_2_1(); draw(); continue;}
             else if (section == 2 || section == 3 || section == 4) { painter = new Painter_2_2(); draw(); continue; }
-            else if (section == 5 ){painter = new Painter_2_5(); draw();continue;}
+            else if (section == 5) { painter = new Painter_2_5(); draw(); continue; }
+            else if (section == 6 ){painter = new Painter_2_6(); draw();continue;}
         }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;
@@ -46,7 +45,8 @@ void draw()
     if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
     glfwSwapInterval(1);
 
-    painter->init(window);
+    painter->init();
+    painter->initWin(window);
 
     while (!glfwWindowShouldClose(window)) {
         painter->display(window, glfwGetTime());

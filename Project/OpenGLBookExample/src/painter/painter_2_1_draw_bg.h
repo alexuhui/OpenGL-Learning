@@ -5,6 +5,6 @@
 class Painter_2_1 : public Painter
 {
 public:
-	const char* getTitle();
+	void init();
 	void display(GLFWwindow* window, double currentTime);
 };

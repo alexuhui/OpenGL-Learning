@@ -1,19 +1,14 @@
 #include "painter_2_5_draw_triangle.h"
 
-#define numVAOs 1
-
-GLuint static renderingProgram;
-GLuint static vao[numVAOs];
-
-static const char* vert = "./shader/s_2_5_draw_triangle_vert.glsl";
-static const char* frag = "./shader/s_2_2_draw_point_frag.glsl";
-
-const char* Painter_2_5::getTitle()
+void Painter_2_5::init()
 {
-    return "Example 2.5";
+    title = "Example 2.5";
+
+    vert = "./shader/s_2_5_draw_triangle_vert.glsl";
+    frag = "./shader/s_2_2_draw_point_frag.glsl";
 }
 
-void Painter_2_5::init(GLFWwindow* window)
+void Painter_2_5::initWin(GLFWwindow* window)
 {
     renderingProgram = createShaderProgram(vert, frag);
     glGenVertexArrays(numVAOs, vao);

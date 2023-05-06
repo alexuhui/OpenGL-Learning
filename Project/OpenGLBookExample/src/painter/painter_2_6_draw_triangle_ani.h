@@ -4,7 +4,7 @@
 
 #define numVAOs 1
 
-class Painter_2_5: public Painter
+class Painter_2_6: public Painter
 {
 public:
 	void init();
@@ -12,4 +12,6 @@ public:
 	void display(GLFWwindow* window, double currentTime);
 
 private:
+	float x = 0.0f;
+	float inc = 0.01f;
 };
