@@ -22,6 +22,9 @@
     <Filter Include="源文件\painter">
       <UniqueIdentifier>{e6a97e4c-4454-4d33-89d2-1b64bfde2e06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\utils">
+      <UniqueIdentifier>{a606fdc6-ceee-4695-99f0-c894dfd53183}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main\main.cpp">
@@ -39,6 +42,21 @@
     <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_2_6_draw_triangle_ani.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_4_1_draw_cube.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_4_2_draw_cube_instanced.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\utils.cpp">
+      <Filter>源文件\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_4_3_draw_cube_pyramid.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -53,6 +71,24 @@
     <ClInclude Include="src\painter\painter_2_5_draw_triangle.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
+    <ClInclude Include="src\main\painter_include.h">
+      <Filter>源文件\main</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_4_2_draw_cube_instanced.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_2_6_draw_triangle_ani.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_4_1_draw_cube.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\utils.h">
+      <Filter>源文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_4_3_draw_cube_pyramid.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader\s_2_2_draw_point_frag.glsl">
@@ -64,6 +100,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\s_2_5_draw_triangle_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_4_1_draw_cube_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_4_1_draw_cube_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_4_2_draw_cube_vert_instanced.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

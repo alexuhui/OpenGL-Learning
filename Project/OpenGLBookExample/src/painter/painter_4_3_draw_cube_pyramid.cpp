@@ -1,6 +1,6 @@
-﻿#include "painter_4_2_draw_cube_instanced.h"
+﻿#include "painter_4_3_draw_cube_pyramid.h"
 
-void Painter_4_2::init()
+void Painter_4_3::init()
 {
     title = "Example 4.2";
 
@@ -8,14 +8,14 @@ void Painter_4_2::init()
     frag = "./shader/s_4_1_draw_cube_frag.glsl";
 }
 
-void Painter_4_2::initWin(GLFWwindow* window)
+void Painter_4_3::initWin(GLFWwindow* window)
 {
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
     setupVertices(vertexPositions, sizeof(vertexPositions));
 }
 
-void Painter_4_2::display(GLFWwindow* window, double currentTime)
+void Painter_4_3::display(GLFWwindow* window, double currentTime)
 {
     glClear(GL_DEPTH_BUFFER_BIT);
     glClearColor(0.5, 0.5, 0.5, 1.0);
@@ -58,12 +58,12 @@ void Painter_4_2::display(GLFWwindow* window, double currentTime)
     glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 240000);
 }
 
-int Painter_4_2::getWidth()
+int Painter_4_3::getWidth()
 {
     return 600;
 }
 
-int Painter_4_2::getHeight()
+int Painter_4_3::getHeight()
 {
     return 600;
 }

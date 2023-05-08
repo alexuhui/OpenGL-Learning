@@ -16,9 +16,15 @@ mat4 buildTranslate(float x, float y, float z);
 void main(void)
 { 
     float i = gl_InstanceID + timeFactor;   // 取值基于时间因子，但是对每个立方体示例也都是不同的
-    float a = sin(2.0 * i) * 8.0;   // 这些是用来平移的 x、y、z 分量
-    float b = sin(3.0 * i) * 8.0;
-    float c = sin(4.0 * i) * 8.0;
+//    float a = sin(2.0 * i) * 8.0;   // 这些是用来平移的 x、y、z 分量
+//    float b = sin(3.0 * i) * 8.0;
+//    float c = sin(4.0 * i) * 8.0;
+
+
+    float a = sin(203.0 * i/8000.0) * 403.0;
+    float b = cos(301.0 * i/4001.0) * 401.0;
+    float c = sin(400.0 * i/6003.0) * 405.0;
+
     
     // 构建旋转和平移矩阵，将会应用于当前立方体的模型矩阵
     mat4 localRotX = buildRotateX(1000*i);
