@@ -2,9 +2,9 @@
 
 void Painter_4_3::init()
 {
-    title = "Example 4.2";
+    title = "Example 4.3";
 
-    vert = "./shader/s_4_2_draw_cube_vert_instanced.glsl";
+    vert = "./shader/s_4_1_draw_cube_vert.glsl";
     frag = "./shader/s_4_1_draw_cube_frag.glsl";
 }
 
@@ -12,7 +12,7 @@ void Painter_4_3::initWin(GLFWwindow* window)
 {
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    setupVertices(vertexPositions, sizeof(vertexPositions));
+    setupVertices(vertexPositions, pyramidPositions, sizeof(vertexPositions));
 }
 
 void Painter_4_3::display(GLFWwindow* window, double currentTime)
@@ -24,8 +24,7 @@ void Painter_4_3::display(GLFWwindow* window, double currentTime)
     glUseProgram(renderingProgram);
 
     // 获取MV矩阵和投影矩阵的统一变量
-    mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
-    vLoc = glGetUniformLocation(renderingProgram, "v_matrix");
+    mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
 
     // 构建透视矩阵
@@ -36,16 +35,11 @@ void Painter_4_3::display(GLFWwindow* window, double currentTime)
     // 构建视图矩阵、模型矩阵和视图-模型矩阵
     vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraX, -cameraY, -cameraZ));
     
+    // 绘制立方体 （使用0号缓冲区）
     mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
-    glUniformMatrix4fv(mLoc, 1, GL_FALSE, glm::value_ptr(mMat));
-    // 构建（和变换）mMat的计算被移动到顶点着色器中去了
-    // 在 C++ 应用程序中不再需要构建MV矩阵
-    glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(vMat));   // 着色器需要视图矩阵的统一变量
-    float timeFactor = ((float)currentTime);                             // 为了获得时间因子信息
-    tfLoc = glGetUniformLocation(renderingProgram, "timeFactor");          // （着色器也需要它）
-    glUniform1f(tfLoc, (float)timeFactor);
+    mvMat = vMat * mMat;
+    glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
-
     // 将VBO关联给顶点着色器中相应的顶点属性
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
@@ -54,8 +48,23 @@ void Painter_4_3::display(GLFWwindow* window, double currentTime)
     // 调整OpenGL设置，绘制模型
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
 
-    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 240000);
+
+    // 绘制金字塔 （使用1号缓冲区）
+    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(pyrLocX, pyrLocY, pyrLocZ));
+    mvMat = vMat * mMat;
+    glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat));
+    glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
+    // 将VBO关联给顶点着色器中相应的顶点属性
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(0);
+
+    // 调整OpenGL设置，绘制模型
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glDrawArrays(GL_TRIANGLES, 0, 18);
 }
 
 int Painter_4_3::getWidth()
