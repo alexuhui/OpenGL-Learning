@@ -37,9 +37,7 @@ private:
         1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f  //RR
     };
 
-    float cameraX = 0.0f, cameraY = 0.0f, cameraZ = 16.0f;
-    float cubeLocX = 0.0f, cubeLocY = -2.0f, cubeLocZ = 0.0f;
-    float pyrLocX = 2.0f, pyrLocY = 2.0f, pyrLocZ = 0.0f;
+    float cameraX = 0.0f, cameraY = 0.0f, cameraZ = 12.0f;
 
     int width = 0, height = 0;
     float aspect = 1.0f;

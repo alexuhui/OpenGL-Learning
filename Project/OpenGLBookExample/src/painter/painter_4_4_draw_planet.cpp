@@ -71,7 +71,7 @@ void Painter_4_4::display(GLFWwindow* window, double currentTime)
     mvStack.top() *= rotate(glm::mat4(1.0f), (float)currentTime, glm::vec3(0.0, 0.0, 1.0));
     mvStack.top() *= scale(glm::mat4(1.0f), glm::vec3(0.25f, 0.25f, 0.25f));
     glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvStack.top()));
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]); // vbo 顶点缓冲对象  地球和月球“模型”相同，顶点相同
     glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
     glEnableVertexAttribArray(0);
     glEnable(GL_DEPTH_TEST);
