@@ -60,6 +60,9 @@
     <ClCompile Include="src\painter\painter_4_4_draw_planet.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_5_1_draw_pyramid_texture.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -95,6 +98,9 @@
     <ClInclude Include="src\painter\painter_4_4_draw_planet.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
+    <ClInclude Include="src\painter\painter_5_1_draw_pyramid_texture.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader\s_2_2_draw_point_frag.glsl">
@@ -118,6 +124,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_4_2_draw_cube_vert_instanced.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_5_1_draw_pyramid_texture_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_5_1_draw_pyramid_texture_frag.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

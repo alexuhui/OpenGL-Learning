@@ -16,7 +16,7 @@ void Painter_4_3::initWin(GLFWwindow* window)
 
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    setupVertices(vertexPositions, pyramidPositions, sizeof(vertexPositions));
+    setupVertices(vertexPositions, pyramidPositions, sizeof(vertexPositions), sizeof(pyramidPositions));
 }
 
 void Painter_4_3::display(GLFWwindow* window, double currentTime)
@@ -36,6 +36,8 @@ void Painter_4_3::display(GLFWwindow* window, double currentTime)
     // 构建视图矩阵、模型矩阵和视图-模型矩阵
     vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraX, -cameraY, -cameraZ));
     
+    glEnable(GL_CULL_FACE);
+
     // 绘制立方体 （使用0号缓冲区）
     mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
     mvMat = vMat * mMat;
@@ -48,6 +50,7 @@ void Painter_4_3::display(GLFWwindow* window, double currentTime)
     // 调整OpenGL设置，绘制模型
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+    glFrontFace(GL_CW);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
@@ -63,6 +66,7 @@ void Painter_4_3::display(GLFWwindow* window, double currentTime)
     // 调整OpenGL设置，绘制模型
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+    glFrontFace(GL_CCW);
     glDrawArrays(GL_TRIANGLES, 0, 18);
 }
 

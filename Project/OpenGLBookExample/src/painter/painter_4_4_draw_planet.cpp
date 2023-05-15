@@ -13,7 +13,7 @@ void Painter_4_4::initWin(GLFWwindow* window)
     this->Painter::initWin(window);
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    setupVertices(vertexPositions, pyramidPositions, sizeof(vertexPositions));
+    setupVertices(vertexPositions, pyramidPositions, sizeof(vertexPositions), sizeof(pyramidPositions));
 }
 
 void Painter_4_4::display(GLFWwindow* window, double currentTime)

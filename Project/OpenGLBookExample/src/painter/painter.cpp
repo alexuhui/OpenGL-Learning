@@ -55,17 +55,17 @@ void Painter::setupVertices(float* vertex, int size)
     glBufferData(GL_ARRAY_BUFFER, size, vertex, GL_STATIC_DRAW);
 }
 
-void Painter::setupVertices(float* vertex1, float* vertex2, int size)
+void Painter::setupVertices(float* vertex1, float* vertex2, int size1, int size2)
 {
     glGenVertexArrays(1, vao);
     glBindVertexArray(vao[0]);
     glGenBuffers(numVBOs, vbo);
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, size, vertex1, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, size1, vertex1, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, size, vertex2, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, size2, vertex2, GL_STATIC_DRAW);
 }
 
 void Painter::windowReshapeCallback(GLFWwindow* window, int width, int height)

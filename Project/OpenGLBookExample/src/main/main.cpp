@@ -35,6 +35,10 @@ int main(void) {
             if (section == 3) { painter = new Painter_4_3(); draw(); continue; }
             if (section == 4) { painter = new Painter_4_4(); draw(); continue; }
         }
+        else if (chapter == 5)
+        {
+            if (section == 1) { painter = new Painter_5_1(); draw(); continue; }
+        }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;
         cout << endl;

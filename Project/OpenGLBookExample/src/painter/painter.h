@@ -38,7 +38,7 @@ protected:
 	GLuint vbo[numVBOs]{};
 
 	virtual void setupVertices(float* vertex, int size);
-	virtual void setupVertices(float* vertex1, float* vertex2, int size);
+	virtual void setupVertices(float* vertex1, float* vertex2, int size1, int size2);
 
 	int width = 0, height = 0;
 	float aspect = 1.0f;
