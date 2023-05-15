@@ -57,6 +57,9 @@
     <ClCompile Include="src\painter\painter_4_3_draw_cube_pyramid.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_4_4_draw_planet.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -87,6 +90,9 @@
       <Filter>源文件\utils</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_4_3_draw_cube_pyramid.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_4_4_draw_planet.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>

@@ -142,6 +142,7 @@
     <ClCompile Include="src\painter\painter_4_1_draw_cube.cpp" />
     <ClCompile Include="src\painter\painter_4_2_draw_cube_instanced.cpp" />
     <ClCompile Include="src\painter\painter_4_3_draw_cube_pyramid.cpp" />
+    <ClCompile Include="src\painter\painter_4_4_draw_planet.cpp" />
     <ClCompile Include="src\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +166,7 @@
     <ClInclude Include="src\painter\painter_4_1_draw_cube.h" />
     <ClInclude Include="src\painter\painter_4_2_draw_cube_instanced.h" />
     <ClInclude Include="src\painter\painter_4_3_draw_cube_pyramid.h" />
+    <ClInclude Include="src\painter\painter_4_4_draw_planet.h" />
     <ClInclude Include="src\utils\utils.h" />
   </ItemGroup>
   <ItemGroup>
