@@ -24,6 +24,7 @@ public:
 	virtual void init();
 	virtual void initWin(GLFWwindow* window);
 	virtual void display(GLFWwindow* window, double currentTime);
+	virtual void windowReshapeCallback(GLFWwindow* window, int width, int height);
 
 	virtual int getWidth();
 	virtual int getHeight();
@@ -38,4 +39,21 @@ protected:
 
 	virtual void setupVertices(float* vertex, int size);
 	virtual void setupVertices(float* vertex1, float* vertex2, int size);
+
+	int width = 0, height = 0;
+	float aspect = 1.0f;
+	float nearClipPlane = 0.1f, farClipPlane = 1000.0f;
+	float fov = 1.0472f; // 1.0472 radians = 60 degrees
+
+	float cameraX = 0.0f, cameraY = 0.0f, cameraZ = 12.0f;
+
+	GLuint mLoc{}, vLoc{}, mvLoc{}, projLoc{};
+	glm::mat4 tMat{}, rMat{}, sMat{};
+	glm::mat4 mMat{}, vMat{}, pMat{}, mvMat{};
+
+	stack<glm::mat4> mvStack;
+
+private:
+	
+	
 };

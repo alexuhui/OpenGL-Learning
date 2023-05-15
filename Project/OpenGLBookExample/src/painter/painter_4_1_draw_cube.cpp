@@ -6,6 +6,9 @@ void Painter_4_1::init()
 
     vert = "./shader/s_4_1_draw_cube_vert.glsl";
     frag = "./shader/s_4_1_draw_cube_frag.glsl";
+
+    cameraX = 0.0f, cameraY = 0.0f, cameraZ = 40.0f;
+    cubeLocX = 0.0f, cubeLocY = -2.0f, cubeLocZ = 0.0f;
 }
 
 void Painter_4_1::initWin(GLFWwindow* window)

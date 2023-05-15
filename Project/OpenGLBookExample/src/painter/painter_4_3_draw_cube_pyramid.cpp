@@ -6,10 +6,14 @@ void Painter_4_3::init()
 
     vert = "./shader/s_4_1_draw_cube_vert.glsl";
     frag = "./shader/s_4_1_draw_cube_frag.glsl";
+
+    cameraX = 0.0f, cameraY = 0.0f, cameraZ = 8.0f;
 }
 
 void Painter_4_3::initWin(GLFWwindow* window)
 {
+    this->Painter::initWin(window);
+
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
     setupVertices(vertexPositions, pyramidPositions, sizeof(vertexPositions));
@@ -27,10 +31,6 @@ void Painter_4_3::display(GLFWwindow* window, double currentTime)
     mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
 
-    // 构建透视矩阵
-    glfwGetFramebufferSize(window, &width, &height);
-    aspect = (float)width / (float)height;
-    pMat = glm::perspective(1.0472f, aspect, 0.1f, 1000.0f); // 1.0472 radians = 60 degrees
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
 
     // 构建视图矩阵、模型矩阵和视图-模型矩阵

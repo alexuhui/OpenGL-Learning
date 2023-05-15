@@ -24,7 +24,10 @@ void Painter::init()
 
 void Painter::initWin(GLFWwindow* window)
 {
-    cout << "Painter initWin" << endl;
+    // 构建透视矩阵
+    glfwGetFramebufferSize(window, &width, &height);
+    aspect = (float)width / (float)height;
+    pMat = glm::perspective(fov, aspect, nearClipPlane, farClipPlane); 
 }
 
 void Painter::display(GLFWwindow* window, double currentTime)
@@ -63,4 +66,11 @@ void Painter::setupVertices(float* vertex1, float* vertex2, int size)
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
     glBufferData(GL_ARRAY_BUFFER, size, vertex2, GL_STATIC_DRAW);
+}
+
+void Painter::windowReshapeCallback(GLFWwindow* window, int width, int height)
+{
+    aspect = (float)width / (float)height;
+    glViewport(0, 0, width, height);
+    pMat = glm::perspective(fov, aspect, nearClipPlane, farClipPlane);
 }

@@ -6,6 +6,7 @@ using namespace std;
 
 Painter* painter;
 void draw();
+void windowReshapeCallback(GLFWwindow* win, int newWidth, int newHeight);
 
 int main(void) {
     
@@ -47,6 +48,7 @@ void draw()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
     GLFWwindow* window = glfwCreateWindow(painter->getWidth(), painter->getHeight(), painter->getTitle(), NULL, NULL);
+    glfwSetWindowSizeCallback(window, windowReshapeCallback);
 
     glfwMakeContextCurrent(window);
     if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
@@ -66,4 +68,9 @@ void draw()
     //exit(EXIT_SUCCESS);
     cout << painter->getTitle() << " closed ..." << endl;
     cout << endl;
+}
+
+void windowReshapeCallback(GLFWwindow* win, int newWidth, int newHeight)
+{
+    painter->windowReshapeCallback(win, newWidth, newHeight);
 }
