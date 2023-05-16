@@ -18,9 +18,6 @@ void Painter_5_1::initWin(GLFWwindow* window)
 
     setupVertices(pyramidPositions, sizeof(pyramidPositions));
 
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidPositions), pyramidPositions, GL_STATIC_DRAW);
-
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoordinates), textureCoordinates, GL_STATIC_DRAW);
 }
@@ -47,7 +44,7 @@ void Painter_5_1::display(GLFWwindow* window, double currentTime)
     mvStack.push(mvStack.top());
     mvStack.top() *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
     mvStack.push(mvStack.top());
-    mvStack.top() *= rotate(glm::mat4(1.0f), (float)currentTime, glm::vec3(1.0, 0.0, 0.0));
+    mvStack.top() *= rotate(glm::mat4(1.0f), (float)currentTime, glm::vec3(1.0, 1.0, 0.0));
     glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvStack.top()));
     mvStack.pop(); mvStack.pop(); mvStack.pop();
 
@@ -57,13 +54,14 @@ void Painter_5_1::display(GLFWwindow* window, double currentTime)
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
     glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
-    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, brickTexture);
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
+    glFrontFace(GL_CCW);
     glDrawArrays(GL_TRIANGLES, 0, 18);
 }
 
