@@ -25,6 +25,9 @@
     <Filter Include="源文件\utils">
       <UniqueIdentifier>{a606fdc6-ceee-4695-99f0-c894dfd53183}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\shape">
+      <UniqueIdentifier>{499db381-3d2a-439e-bb46-fd55fc76232f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main\main.cpp">
@@ -63,6 +66,12 @@
     <ClCompile Include="src\painter\painter_5_1_draw_pyramid_texture.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\shape\sphere.cpp">
+      <Filter>源文件\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_6_1_draw_sphere.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -99,6 +108,12 @@
       <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_5_1_draw_pyramid_texture.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shape\sphere.h">
+      <Filter>源文件\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_6_1_draw_sphere.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>

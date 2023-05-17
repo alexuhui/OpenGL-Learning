@@ -6,7 +6,8 @@ void Painter_5_1::init()
 
     vert = "./shader/s_5_1_draw_pyramid_texture_vert.glsl";
     frag = "./shader/s_5_1_draw_pyramid_texture_frag.glsl";
-    tex0 = "./res/img/brick1.jpg";
+    //tex0 = "./res/img/brick1.jpg";
+    tex0 = "./res/img/ice.jpg";
 }
 
 void Painter_5_1::initWin(GLFWwindow* window)

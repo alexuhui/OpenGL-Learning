@@ -9,3 +9,4 @@
 #include "../painter/painter_4_3_draw_cube_pyramid.h"
 #include "../painter/painter_4_4_draw_planet.h"
 #include "../painter/painter_5_1_draw_pyramid_texture.h"
+#include "../painter/painter_6_1_draw_sphere.h"
