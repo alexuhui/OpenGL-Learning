@@ -17,46 +17,9 @@ void Painter_6_1::initWin(GLFWwindow* window)
 
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    brickTexture = Utils::loadTexture(tex0);
+    texture = Utils::loadTexture(tex0);
 
-    /*setupVertices(pyramidPositions, sizeof(pyramidPositions));
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoordinates), textureCoordinates, GL_STATIC_DRAW);*/
-
-    std::vector<int> ind = mySphere.getIndices();
-    std::vector<glm::vec3> vert = mySphere.getVertices();
-    std::vector<glm::vec2> tex = mySphere.getTexCoords();
-    std::vector<glm::vec3> norm = mySphere.getNormals();
-
-    std::vector<float> pvalues;
-    std::vector<float> tvalues;
-    std::vector<float> nvalues;
-
-    int numIndices = mySphere.getNumIndices();
-    for (int i = 0; i < numIndices; i++) {
-        pvalues.push_back((vert[ind[i]]).x);
-        pvalues.push_back((vert[ind[i]]).y);
-        pvalues.push_back((vert[ind[i]]).z);
-        tvalues.push_back((tex[ind[i]]).s);
-        tvalues.push_back((tex[ind[i]]).t);
-        nvalues.push_back((norm[ind[i]]).x);
-        nvalues.push_back((norm[ind[i]]).y);
-        nvalues.push_back((norm[ind[i]]).z);
-    }
-
-    glGenVertexArrays(1, vao);
-    glBindVertexArray(vao[0]);
-    glGenBuffers(numVBOs, vbo);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, pvalues.size() * 4, &pvalues[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, tvalues.size() * 4, &tvalues[0], GL_STATIC_DRAW);
-
-    /*glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-    glBufferData(GL_ARRAY_BUFFER, nvalues.size() * 4, &nvalues[0], GL_STATIC_DRAW);*/
+    setupVertices(mySphere);
 }
 
 void Painter_6_1::display(GLFWwindow* window, double currentTime)
@@ -81,7 +44,7 @@ void Painter_6_1::display(GLFWwindow* window, double currentTime)
     mvStack.push(mvStack.top());
     mvStack.top() *= glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
     mvStack.push(mvStack.top());
-    mvStack.top() *= rotate(glm::mat4(1.0f), (float)currentTime, glm::vec3(1.0, 1.0, 0.0));
+    mvStack.top() *= rotate(glm::mat4(1.0f), (float)currentTime, glm::vec3(0.0, 1.0, 0.0));
     glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvStack.top()));
     mvStack.pop(); mvStack.pop(); mvStack.pop();
 
@@ -94,7 +57,7 @@ void Painter_6_1::display(GLFWwindow* window, double currentTime)
     glEnableVertexAttribArray(1);
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, brickTexture);
+    glBindTexture(GL_TEXTURE_2D, texture);
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);

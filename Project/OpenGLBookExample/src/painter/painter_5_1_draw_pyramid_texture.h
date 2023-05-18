@@ -32,6 +32,6 @@ protected:
     };
 
 
-    GLint brickTexture{};
+    GLint texture{};
     const char* tex0 = "";
 };

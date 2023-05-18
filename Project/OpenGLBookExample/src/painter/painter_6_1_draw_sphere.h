@@ -17,7 +17,7 @@ public:
     int getHeight();
 
 protected:
-    GLint brickTexture{};
+    GLint texture{};
     const char* tex0 = "";
-    Sphere mySphere = Sphere(48);
+    Sphere mySphere = Sphere(4);
 };

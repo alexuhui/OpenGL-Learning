@@ -55,11 +55,3 @@ void Sphere::init(int prec) {
 		}
 	}
 }
-
-int Sphere::getNumVertices() { return numVertices; }
-int Sphere::getNumIndices() { return numIndices; }
-std::vector<int> Sphere::getIndices() { return indices; }
-std::vector<glm::vec3> Sphere::getVertices() { return vertices; }
-std::vector<glm::vec2> Sphere::getTexCoords() { return texCoords; }
-std::vector<glm::vec3> Sphere::getNormals() { return normals; }
-std::vector<glm::vec3> Sphere::getTangents() { return tangents; }

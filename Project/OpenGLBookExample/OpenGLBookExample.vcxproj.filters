@@ -72,6 +72,9 @@
     <ClCompile Include="src\painter\painter_6_1_draw_sphere.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\shape\shape.cpp">
+      <Filter>源文件\shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="src\painter\painter_6_1_draw_sphere.h">
       <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shape\shape.h">
+      <Filter>源文件\shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

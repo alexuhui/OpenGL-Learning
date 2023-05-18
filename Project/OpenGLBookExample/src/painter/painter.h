@@ -8,9 +8,10 @@
 #include <stack>
 
 #include "../utils/utils.h"
+#include "../shape/shape.h"
 
 #define numVAOs 1
-#define numVBOs 2
+#define numVBOs 3
 
 using namespace std;
 
@@ -39,6 +40,7 @@ protected:
 
 	virtual void setupVertices(float* vertex, int size);
 	virtual void setupVertices(float* vertex1, float* vertex2, int size1, int size2);
+	virtual void setupVertices(Shape myShape);
 
 	int width = 0, height = 0;
 	float aspect = 1.0f;

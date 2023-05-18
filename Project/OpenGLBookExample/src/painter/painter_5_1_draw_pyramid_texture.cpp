@@ -15,7 +15,7 @@ void Painter_5_1::initWin(GLFWwindow* window)
     this->Painter::initWin(window);
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    brickTexture = Utils::loadTexture(tex0);
+    texture = Utils::loadTexture(tex0);
 
     setupVertices(pyramidPositions, sizeof(pyramidPositions));
 
@@ -58,7 +58,7 @@ void Painter_5_1::display(GLFWwindow* window, double currentTime)
     glEnableVertexAttribArray(1);
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, brickTexture);
+    glBindTexture(GL_TEXTURE_2D, texture);
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
