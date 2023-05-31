@@ -12,5 +12,4 @@ public:
 
 private:
 	void init(int);
-	float toRadians(float degrees);
 };

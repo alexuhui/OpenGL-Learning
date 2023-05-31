@@ -10,3 +10,4 @@
 #include "../painter/painter_4_4_draw_planet.h"
 #include "../painter/painter_5_1_draw_pyramid_texture.h"
 #include "../painter/painter_6_1_draw_sphere.h"
+#include "../painter/painter_6_2_draw_torus.h"

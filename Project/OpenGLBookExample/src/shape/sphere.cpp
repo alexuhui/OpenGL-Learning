@@ -13,15 +13,13 @@ Sphere::Sphere(int prec) {
 	init(prec);
 }
 
-float Sphere::toRadians(float degrees) { return (degrees * 2.0f * 3.14159f) / 360.0f; }
-
 void Sphere::init(int prec) {
 	numVertices = (prec + 1) * (prec + 1);
 	numIndices = prec * prec * 6;
 	for (int i = 0; i < numVertices; i++) { vertices.push_back(glm::vec3()); }
 	for (int i = 0; i < numVertices; i++) { texCoords.push_back(glm::vec2()); }
 	for (int i = 0; i < numVertices; i++) { normals.push_back(glm::vec3()); }
-	for (int i = 0; i < numVertices; i++) { tangents.push_back(glm::vec3()); }
+	for (int i = 0; i < numVertices; i++) { sTangents.push_back(glm::vec3()); }
 	for (int i = 0; i < numIndices; i++) { indices.push_back(0); }
 
 	// calculate triangle vertices
@@ -36,10 +34,10 @@ void Sphere::init(int prec) {
 
 			// calculate tangent vector
 			if (((x == 0) && (y == 1) && (z == 0)) || ((x == 0) && (y == -1) && (z == 0))) {
-				tangents[i*(prec + 1) + j] = glm::vec3(0.0f, 0.0f, -1.0f);
+				sTangents[i*(prec + 1) + j] = glm::vec3(0.0f, 0.0f, -1.0f);
 			}
 			else {
-				tangents[i*(prec + 1) + j] = glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(x, y, z));
+				sTangents[i*(prec + 1) + j] = glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(x, y, z));
 			}
 		}
 	}
