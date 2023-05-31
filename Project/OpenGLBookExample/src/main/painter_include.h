@@ -11,3 +11,4 @@
 #include "../painter/painter_5_1_draw_pyramid_texture.h"
 #include "../painter/painter_6_1_draw_sphere.h"
 #include "../painter/painter_6_2_draw_torus.h"
+#include "../painter/painter_6_3_draw_model.h"

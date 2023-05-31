@@ -43,6 +43,7 @@ int main(void) {
         {
             if (section == 1) { painter = new Painter_6_1(); draw(); continue; }
             if (section == 2) { painter = new Painter_6_2(); draw(); continue; }
+            if (section == 3) { painter = new Painter_6_3(); draw(); continue; }
         }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;

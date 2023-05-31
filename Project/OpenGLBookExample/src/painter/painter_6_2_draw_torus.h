@@ -4,8 +4,6 @@
 
 #include "..\shape\torus.h"
 
-#define numVBOs 3
-
 class Painter_6_2 : public Painter
 {
 public:

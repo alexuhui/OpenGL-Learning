@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main\main.cpp" />
+    <ClCompile Include="src\model\imported_model.cpp" />
     <ClCompile Include="src\painter\painter.cpp" />
     <ClCompile Include="src\painter\painter_2_1_draw_bg.cpp" />
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp" />
@@ -146,6 +147,8 @@
     <ClCompile Include="src\painter\painter_5_1_draw_pyramid_texture.cpp" />
     <ClCompile Include="src\painter\painter_6_1_draw_sphere.cpp" />
     <ClCompile Include="src\painter\painter_6_2_draw_torus.cpp" />
+    <ClCompile Include="src\painter\painter_6_3_draw_model.cpp" />
+    <ClCompile Include="src\painter\painter_model.cpp" />
     <ClCompile Include="src\shape\shape.cpp" />
     <ClCompile Include="src\shape\sphere.cpp" />
     <ClCompile Include="src\shape\torus.cpp" />
@@ -164,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\main\painter_include.h" />
+    <ClInclude Include="src\model\imported_model.h" />
     <ClInclude Include="src\painter\painter.h" />
     <ClInclude Include="src\painter\painter_2_1_draw_bg.h" />
     <ClInclude Include="src\painter\painter_2_2_draw_point.h" />
@@ -176,6 +180,8 @@
     <ClInclude Include="src\painter\painter_5_1_draw_pyramid_texture.h" />
     <ClInclude Include="src\painter\painter_6_1_draw_sphere.h" />
     <ClInclude Include="src\painter\painter_6_2_draw_torus.h" />
+    <ClInclude Include="src\painter\painter_6_3_draw_model.h" />
+    <ClInclude Include="src\painter\painter_model.h" />
     <ClInclude Include="src\shape\shape.h" />
     <ClInclude Include="src\shape\sphere.h" />
     <ClInclude Include="src\shape\torus.h" />

@@ -4,8 +4,6 @@
 
 #include "..\shape\sphere.h"
 
-#define numVBOs 3
-
 class Painter_6_1 : public Painter
 {
 public:

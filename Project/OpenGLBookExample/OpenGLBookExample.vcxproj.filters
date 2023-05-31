@@ -28,6 +28,9 @@
     <Filter Include="源文件\shape">
       <UniqueIdentifier>{499db381-3d2a-439e-bb46-fd55fc76232f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\model">
+      <UniqueIdentifier>{5be6e55d-a22b-4315-8a73-0b1698fd51d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main\main.cpp">
@@ -81,6 +84,15 @@
     <ClCompile Include="src\shape\torus.cpp">
       <Filter>源文件\shape</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_model.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\imported_model.cpp">
+      <Filter>源文件\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_6_3_draw_model.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -133,6 +145,15 @@
     </ClInclude>
     <ClInclude Include="src\shape\torus.h">
       <Filter>源文件\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_model.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\imported_model.h">
+      <Filter>源文件\model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_6_3_draw_model.h">
+      <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
