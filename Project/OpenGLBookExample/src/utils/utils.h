@@ -43,4 +43,6 @@ public:
 	static float* bronzeDiffuse();
 	static float* bronzeSpecular();
 	static float bronzeShininess();
+
+	static float toRadians(float degrees);
 };

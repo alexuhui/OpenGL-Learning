@@ -206,3 +206,6 @@ float* Utils::bronzeAmbient() { static float a[4] = { 0.2125f, 0.1275f, 0.0540f,
 float* Utils::bronzeDiffuse() { static float a[4] = { 0.7140f, 0.4284f, 0.1814f, 1 }; return (float*)a; }
 float* Utils::bronzeSpecular() { static float a[4] = { 0.3936f, 0.2719f, 0.1667f, 1 }; return (float*)a; }
 float Utils::bronzeShininess() { return 25.6f; }
+
+
+float Utils::toRadians(float degrees) { return (degrees * 2.0f * 3.14159f) / 360.0f; }

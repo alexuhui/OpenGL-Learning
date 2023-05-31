@@ -148,6 +148,7 @@
     <ClCompile Include="src\painter\painter_6_1_draw_sphere.cpp" />
     <ClCompile Include="src\painter\painter_6_2_draw_torus.cpp" />
     <ClCompile Include="src\painter\painter_6_3_draw_model.cpp" />
+    <ClCompile Include="src\painter\painter_7_1_draw_torus_gold.cpp" />
     <ClCompile Include="src\painter\painter_model.cpp" />
     <ClCompile Include="src\shape\shape.cpp" />
     <ClCompile Include="src\shape\sphere.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="src\painter\painter_6_1_draw_sphere.h" />
     <ClInclude Include="src\painter\painter_6_2_draw_torus.h" />
     <ClInclude Include="src\painter\painter_6_3_draw_model.h" />
+    <ClInclude Include="src\painter\painter_7_1_draw_torus_gold.h" />
     <ClInclude Include="src\painter\painter_model.h" />
     <ClInclude Include="src\shape\shape.h" />
     <ClInclude Include="src\shape\sphere.h" />
@@ -195,6 +197,8 @@
     <None Include="shader\s_4_2_draw_cube_vert_instanced.glsl" />
     <None Include="shader\s_5_1_draw_pyramid_texture_frag.glsl" />
     <None Include="shader\s_5_1_draw_pyramid_texture_vert.glsl" />
+    <None Include="shader\s_7_1_blinn_phong_frag.glsl" />
+    <None Include="shader\s_7_1_blinn_phong_vert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

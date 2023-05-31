@@ -12,3 +12,4 @@
 #include "../painter/painter_6_1_draw_sphere.h"
 #include "../painter/painter_6_2_draw_torus.h"
 #include "../painter/painter_6_3_draw_model.h"
+#include "../painter/painter_7_1_draw_torus_gold.h"
