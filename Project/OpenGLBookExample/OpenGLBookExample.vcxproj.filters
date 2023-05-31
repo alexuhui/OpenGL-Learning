@@ -93,7 +93,13 @@
     <ClCompile Include="src\painter\painter_6_3_draw_model.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
-    <ClCompile Include="src\painter\painter_7_1_draw_torus_gold.cpp">
+    <ClCompile Include="src\painter\painter_7_1_draw_torus_gold_gouraud.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_7_2_draw_torus_gold_phong.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_7_3_draw_torus_gold_blinn_phong.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,7 +164,13 @@
     <ClInclude Include="src\painter\painter_6_3_draw_model.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
-    <ClInclude Include="src\painter\painter_7_1_draw_torus_gold.h">
+    <ClInclude Include="src\painter\painter_7_1_draw_torus_gold_gouraud.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_7_2_draw_torus_gold_phong.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_7_3_draw_torus_gold_blinn_phong.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -192,10 +204,22 @@
     <None Include="shader\s_5_1_draw_pyramid_texture_frag.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
-    <None Include="shader\s_7_1_blinn_phong_frag.glsl">
+    <None Include="shader\s_7_1_gouraud_frag.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
-    <None Include="shader\s_7_1_blinn_phong_vert.glsl">
+    <None Include="shader\s_7_1_gouraud_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_7_2_phong_flag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_7_2_phong_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_7_3_blinn_phong_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_7_3_blinn_phong_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>
