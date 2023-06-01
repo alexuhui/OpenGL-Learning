@@ -11,9 +11,6 @@
 #include "../shape/shape.h"
 #include "../model/imported_model.h"
 
-#define numVAOs 1
-#define numVBOs 5
-
 using namespace std;
 
 class Painter
@@ -36,14 +33,20 @@ protected:
 	const char* vert = "";
 	const char* frag = "";
 	GLuint renderingProgram = 0;
-	GLuint vao[numVAOs]{};
-	GLuint vbo[numVBOs]{};
 
-	virtual void setupVertices(float* vertex, int size);
-	virtual void setupVertices(float* vertex1, float* vertex2, int size1, int size2);
+	GLuint* vao;
+	GLuint* vbo;
+
+	int numVaos = 1;
+	int numVbos = 1;
+	virtual void initVaoVbo(int vboCnt = 1, int vaoCnt = 1);
+	virtual void setupVbo(float* bufData, int size, int index);
+	virtual void setupVbo(int* bufData, int size, int index);
+
 	virtual void setupVertices(Shape myShape);
 	virtual void setupVertices(Shape myShape, bool useIndexBuf);
 	virtual void setupVertices(ImportedModel myModel);
+
 	virtual void installLights(int renderingProgram, glm::mat4 vMatrix, float* matAmb, float* matDif, float* matSpe, float matShi);
 
 	int width = 0, height = 0;
@@ -55,17 +58,17 @@ protected:
 
 	glm::vec3 lightLoc = glm::vec3(5.0f, 2.0f, 2.0f);
 	float amt = 0.0f;
-	GLuint nLoc;
-	GLuint globalAmbLoc, ambLoc, diffLoc, specLoc, posLoc, mambLoc, mdiffLoc, mspecLoc, mshiLoc;
+	GLuint nLoc = 0;
+	GLuint globalAmbLoc = 0, ambLoc = 0, diffLoc = 0, specLoc = 0, posLoc = 0, mambLoc = 0, mdiffLoc = 0, mspecLoc = 0, mshiLoc = 0;
 
-	GLuint mLoc{}, vLoc{}, mvLoc{}, projLoc{};
+	GLuint mLoc = 0, vLoc = 0, mvLoc = 0, projLoc = 0;
 	glm::mat4 tMat{}, rMat{}, sMat{};
 	glm::mat4 mMat{}, vMat{}, pMat{}, mvMat{};
-	glm::mat4 invTrMat;
-	glm::vec3 currentLightPos, transformed;
-	float lightPos[3];
+	glm::mat4 invTrMat{};
+	glm::vec3 currentLightPos{}, transformed{};
+	float lightPos[3]{};
 
-	stack<glm::mat4> mvStack;
+	stack<glm::mat4> mvStack{};
 
 	// white light
 	float globalAmbient[4] = { 0.7f, 0.7f, 0.7f, 1.0f };

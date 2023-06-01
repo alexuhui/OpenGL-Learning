@@ -16,7 +16,9 @@ void Painter_4_3::initWin(GLFWwindow* window)
 
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    setupVertices(vertexPositions, pyramidPositions, sizeof(vertexPositions), sizeof(pyramidPositions));
+    initVaoVbo(2);
+    setupVbo(vertexPositions, sizeof(vertexPositions), 0);
+    setupVbo(pyramidPositions, sizeof(pyramidPositions), 1);
 }
 
 void Painter_4_3::display(GLFWwindow* window, double currentTime)

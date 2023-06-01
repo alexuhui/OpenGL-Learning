@@ -17,10 +17,9 @@ void Painter_5_1::initWin(GLFWwindow* window)
 
     texture = Utils::loadTexture(tex0);
 
-    setupVertices(pyramidPositions, sizeof(pyramidPositions));
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(textureCoordinates), textureCoordinates, GL_STATIC_DRAW);
+    initVaoVbo(2);
+    setupVbo(pyramidPositions, sizeof(pyramidPositions), 0);
+    setupVbo(textureCoordinates, sizeof(textureCoordinates), 1);
 }
 
 void Painter_5_1::display(GLFWwindow* window, double currentTime)

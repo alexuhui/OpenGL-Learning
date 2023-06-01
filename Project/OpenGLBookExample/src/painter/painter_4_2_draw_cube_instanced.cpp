@@ -14,7 +14,8 @@ void Painter_4_2::initWin(GLFWwindow* window)
 {
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
-    setupVertices(vertexPositions, sizeof(vertexPositions));
+    initVaoVbo();
+    setupVbo(vertexPositions, sizeof(vertexPositions), 0);
 }
 
 void Painter_4_2::display(GLFWwindow* window, double currentTime)

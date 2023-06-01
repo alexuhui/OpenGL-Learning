@@ -11,8 +11,7 @@ void Painter_2_5::init()
 void Painter_2_5::initWin(GLFWwindow* window)
 {
     renderingProgram = Utils::createShaderProgram(vert, frag);
-    glGenVertexArrays(numVAOs, vao);
-    glBindVertexArray(vao[0]);
+    initVaoVbo();
 }
 
 void Painter_2_5::display(GLFWwindow* window, double currentTime)

@@ -45,29 +45,30 @@ int Painter::getHeight()
     return 540;
 }
 
-void Painter::setupVertices(float* vertex, int size)
+void Painter::initVaoVbo(int vboCnt, int vaoCnt)
 {
-    glGenVertexArrays(1, vao);
-    glBindVertexArray(vao[0]);
-    glGenBuffers(numVBOs, vbo);
+    numVaos = vaoCnt;
+    numVbos = vboCnt;
 
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, size, vertex, GL_STATIC_DRAW);
+    vao = new GLuint[numVaos];
+    vbo = new GLuint[numVbos];
+
+    glGenVertexArrays(numVaos, vao);
+    glBindVertexArray(vao[0]);
+    glGenBuffers(numVbos, vbo);
 }
 
-void Painter::setupVertices(float* vertex1, float* vertex2, int size1, int size2)
+void  Painter::setupVbo(float* bufData, int size, int index)
 {
-    glGenVertexArrays(1, vao);
-    glBindVertexArray(vao[0]);
-    glGenBuffers(numVBOs, vbo);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, size1, vertex1, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, size2, vertex2, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[index]);
+    glBufferData(GL_ARRAY_BUFFER, size, bufData, GL_STATIC_DRAW);
 }
 
+void  Painter::setupVbo(int* bufData, int size, int index)
+{
+    glBindBuffer(GL_ARRAY_BUFFER, vbo[index]);
+    glBufferData(GL_ARRAY_BUFFER, size, bufData, GL_STATIC_DRAW);
+}
 
 /// <summary>
 /// 直接把顶点属性对应到每个顶点索引上
@@ -96,18 +97,10 @@ void Painter::setupVertices(Shape myShape)
         nvalues.push_back((norm[ind[i]]).z);
     }
 
-    glGenVertexArrays(1, vao);
-    glBindVertexArray(vao[0]);
-    glGenBuffers(numVBOs, vbo);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, pvalues.size() * 4, &pvalues[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, tvalues.size() * 4, &tvalues[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-    glBufferData(GL_ARRAY_BUFFER, nvalues.size() * 4, &nvalues[0], GL_STATIC_DRAW);
+    initVaoVbo(3);
+    setupVbo(&pvalues[0], pvalues.size() * 4, 0);
+    setupVbo(&tvalues[0], tvalues.size() * 4, 1);
+    setupVbo(&nvalues[0], nvalues.size() * 4, 2);
 }
 
 /// <summary>
@@ -143,21 +136,12 @@ void Painter::setupVertices(Shape myShape, bool useIndexBuf)
         nvalues.push_back(norm[i].y);
         nvalues.push_back(norm[i].z);
     }
-    glGenVertexArrays(1, vao);
-    glBindVertexArray(vao[0]);
-    glGenBuffers(numVBOs, vbo);
 
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, pvalues.size() * 4, &pvalues[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, tvalues.size() * 4, &tvalues[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-    glBufferData(GL_ARRAY_BUFFER, nvalues.size() * 4, &nvalues[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[3]);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, ind.size() * 4, &ind[0], GL_STATIC_DRAW);
+    initVaoVbo(4);
+    setupVbo(&pvalues[0], pvalues.size() * 4, 0);
+    setupVbo(&tvalues[0], tvalues.size() * 4, 1);
+    setupVbo(&nvalues[0], nvalues.size() * 4, 2);
+    setupVbo(&ind[0], ind.size() * 4, 3);
 }
 
 void Painter::setupVertices(ImportedModel myModel)
@@ -182,21 +166,10 @@ void Painter::setupVertices(ImportedModel myModel)
         nvalues.push_back((norm[i]).z);
     }
 
-    glGenVertexArrays(1, vao);
-    glBindVertexArray(vao[0]);
-    glGenBuffers(numVBOs, vbo);
-
-    // 顶点位置的VBO
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, pvalues.size() * 4, &pvalues[0], GL_STATIC_DRAW);
-
-    // 纹理坐标的VBO
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, tvalues.size() * 4, &tvalues[0], GL_STATIC_DRAW);
-
-    // 法向量的VBO
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-    glBufferData(GL_ARRAY_BUFFER, nvalues.size() * 4, &nvalues[0], GL_STATIC_DRAW);
+    initVaoVbo(3);
+    setupVbo(&pvalues[0], pvalues.size() * 4, 0);
+    setupVbo(&tvalues[0], tvalues.size() * 4, 1);
+    setupVbo(&nvalues[0], nvalues.size() * 4, 2);
 }
 
 void Painter::installLights(int renderingProgram, glm::mat4 vMatrix, float * matAmb, float * matDif, float* matSpe, float matShi) {
