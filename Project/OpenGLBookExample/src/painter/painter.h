@@ -34,8 +34,8 @@ protected:
 	const char* frag = "";
 	GLuint renderingProgram = 0;
 
-	GLuint* vao;
-	GLuint* vbo;
+	GLuint* vao{};
+	GLuint* vbo{};
 
 	int numVaos = 1;
 	int numVbos = 1;
