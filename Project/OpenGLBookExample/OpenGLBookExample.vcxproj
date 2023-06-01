@@ -151,7 +151,6 @@
     <ClCompile Include="src\painter\painter_7_1_draw_torus_gold_gouraud.cpp" />
     <ClCompile Include="src\painter\painter_7_2_draw_torus_gold_phong.cpp" />
     <ClCompile Include="src\painter\painter_7_3_draw_torus_gold_blinn_phong.cpp" />
-    <ClCompile Include="src\painter\painter_model.cpp" />
     <ClCompile Include="src\shape\shape.cpp" />
     <ClCompile Include="src\shape\sphere.cpp" />
     <ClCompile Include="src\shape\torus.cpp" />
@@ -187,7 +186,6 @@
     <ClInclude Include="src\painter\painter_7_1_draw_torus_gold_gouraud.h" />
     <ClInclude Include="src\painter\painter_7_2_draw_torus_gold_phong.h" />
     <ClInclude Include="src\painter\painter_7_3_draw_torus_gold_blinn_phong.h" />
-    <ClInclude Include="src\painter\painter_model.h" />
     <ClInclude Include="src\shape\shape.h" />
     <ClInclude Include="src\shape\sphere.h" />
     <ClInclude Include="src\shape\torus.h" />

@@ -84,9 +84,6 @@
     <ClCompile Include="src\shape\torus.cpp">
       <Filter>源文件\shape</Filter>
     </ClCompile>
-    <ClCompile Include="src\painter\painter_model.cpp">
-      <Filter>源文件\painter</Filter>
-    </ClCompile>
     <ClCompile Include="src\model\imported_model.cpp">
       <Filter>源文件\model</Filter>
     </ClCompile>
@@ -154,9 +151,6 @@
     </ClInclude>
     <ClInclude Include="src\shape\torus.h">
       <Filter>源文件\shape</Filter>
-    </ClInclude>
-    <ClInclude Include="src\painter\painter_model.h">
-      <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\model\imported_model.h">
       <Filter>源文件\model</Filter>

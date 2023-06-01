@@ -4,8 +4,8 @@ void Painter_7_1::init()
 {
     title = "Example 7.1";
 
-    vert = "./shader/s_7_1_blinn_gouraud_vert.glsl";
-    frag = "./shader/s_7_1_blinn_gouraud_frag.glsl";
+    vert = "./shader/s_7_1_gouraud_vert.glsl";
+    frag = "./shader/s_7_1_gouraud_frag.glsl";
 }
 
 void Painter_7_1::initWin(GLFWwindow* window)
@@ -17,38 +17,7 @@ void Painter_7_1::initWin(GLFWwindow* window)
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
     texture = Utils::loadTexture(tex0);
-
-    //setupVertices(myTorus);
     setupVertices(myTorus, true);
-}
-
-void Painter_7_1::installLights(glm::mat4 vMatrix) {
-    transformed = glm::vec3(vMatrix * glm::vec4(currentLightPos, 1.0));
-    lightPos[0] = transformed.x;
-    lightPos[1] = transformed.y;
-    lightPos[2] = transformed.z;
-
-    // get the locations of the light and material fields in the shader
-    globalAmbLoc = glGetUniformLocation(renderingProgram, "globalAmbient");
-    ambLoc = glGetUniformLocation(renderingProgram, "light.ambient");
-    diffLoc = glGetUniformLocation(renderingProgram, "light.diffuse");
-    specLoc = glGetUniformLocation(renderingProgram, "light.specular");
-    posLoc = glGetUniformLocation(renderingProgram, "light.position");
-    mambLoc = glGetUniformLocation(renderingProgram, "material.ambient");
-    mdiffLoc = glGetUniformLocation(renderingProgram, "material.diffuse");
-    mspecLoc = glGetUniformLocation(renderingProgram, "material.specular");
-    mshiLoc = glGetUniformLocation(renderingProgram, "material.shininess");
-
-    //  set the uniform light and material values in the shader
-    glProgramUniform4fv(renderingProgram, globalAmbLoc, 1, globalAmbient);
-    glProgramUniform4fv(renderingProgram, ambLoc, 1, lightAmbient);
-    glProgramUniform4fv(renderingProgram, diffLoc, 1, lightDiffuse);
-    glProgramUniform4fv(renderingProgram, specLoc, 1, lightSpecular);
-    glProgramUniform3fv(renderingProgram, posLoc, 1, lightPos);
-    glProgramUniform4fv(renderingProgram, mambLoc, 1, matAmb);
-    glProgramUniform4fv(renderingProgram, mdiffLoc, 1, matDif);
-    glProgramUniform4fv(renderingProgram, mspecLoc, 1, matSpe);
-    glProgramUniform1f(renderingProgram, mshiLoc, matShi);
 }
 
 void Painter_7_1::display(GLFWwindow* window, double currentTime)
@@ -72,7 +41,7 @@ void Painter_7_1::display(GLFWwindow* window, double currentTime)
     rMat = glm::rotate(glm::mat4(1.0f), Utils::toRadians(amt), glm::vec3(0.0f, 0.0f, 1.0f));
     currentLightPos = glm::vec3(rMat * glm::vec4(currentLightPos, 1.0f));
 
-    installLights(vMat);
+    installLights(renderingProgram, vMat, matAmb, matDif, matSpe, matShi);
 
     mvMat = vMat * mMat;
     invTrMat = glm::transpose(glm::inverse(mvMat));

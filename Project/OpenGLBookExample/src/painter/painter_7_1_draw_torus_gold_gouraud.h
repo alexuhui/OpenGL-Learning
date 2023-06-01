@@ -18,28 +18,4 @@ protected:
     GLint texture{};
     const char* tex0 = "";
     Torus myTorus = Torus(0.5f, 0.2f, 48);
-
-    glm::vec3 lightLoc = glm::vec3(5.0f, 2.0f, 2.0f);
-    float amt = 0.0f;
-
-    // variable allocation for display
-    GLuint nLoc;
-    GLuint globalAmbLoc, ambLoc, diffLoc, specLoc, posLoc, mambLoc, mdiffLoc, mspecLoc, mshiLoc;
-    glm::mat4 invTrMat;
-    glm::vec3 currentLightPos, transformed;
-    float lightPos[3];
-
-    // white light
-    float globalAmbient[4] = { 0.7f, 0.7f, 0.7f, 1.0f };
-    float lightAmbient[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-    float lightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    float lightSpecular[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
-
-    // gold material
-    float* matAmb = Utils::goldAmbient();
-    float* matDif = Utils::goldDiffuse();
-    float* matSpe = Utils::goldSpecular();
-    float matShi = Utils::goldShininess();
-
-    void installLights(glm::mat4 vMatrix);
 };

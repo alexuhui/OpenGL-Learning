@@ -1,10 +1,10 @@
 #pragma once
 
-#include "painter_model.h"
+#include "painter.h"
 
 #include "..\shape\torus.h"
 
-class Painter_6_3 : public Painter_Model
+class Painter_6_3 : public Painter
 {
 public:
 	void init();
