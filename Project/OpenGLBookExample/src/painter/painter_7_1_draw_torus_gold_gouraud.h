@@ -36,10 +36,10 @@ protected:
     float lightSpecular[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 
     // gold material
-    float* matAmb = Utils::silverAmbient();
-    float* matDif = Utils::silverDiffuse();
-    float* matSpe = Utils::silverSpecular();
-    float matShi = Utils::silverShininess();
+    float* matAmb = Utils::goldAmbient();
+    float* matDif = Utils::goldDiffuse();
+    float* matSpe = Utils::goldSpecular();
+    float matShi = Utils::goldShininess();
 
     void installLights(glm::mat4 vMatrix);
 };
