@@ -48,12 +48,12 @@ void Painter_8_1::display(GLFWwindow* window, double currentTime)
 	//glDrawBuffer(GL_FRONT);
 	glDrawBuffer(GL_NONE);
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_POLYGON_OFFSET_FILL);	// for reducing
-	//glPolygonOffset(2.0f, 4.0f);		//  shadow artifacts
+	glEnable(GL_POLYGON_OFFSET_FILL);	// for reducing
+	glPolygonOffset(2.0f, 4.0f);		//  shadow artifacts
 
 	passOne();
 
-	//glDisable(GL_POLYGON_OFFSET_FILL);	// artifact reduction, continued
+	glDisable(GL_POLYGON_OFFSET_FILL);	// artifact reduction, continued
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glActiveTexture(GL_TEXTURE0);
