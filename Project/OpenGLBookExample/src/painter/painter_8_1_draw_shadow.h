@@ -30,5 +30,4 @@ protected:
 
     void passOne();
     void passTwo();
-    void setupVertices();
 };

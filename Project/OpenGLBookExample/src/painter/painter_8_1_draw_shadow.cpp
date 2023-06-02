@@ -26,75 +26,10 @@ void Painter_8_1::initWin(GLFWwindow* window)
     texture = Utils::loadTexture(tex0);
 	myModel = ImportedModel(model0);
 
-    //initVaoVbo(5);
-    /*setupVertices(myTorus, 0, true);
-    setupVertices(myModel, 4);*/
-	setupVertices();
-
+    initVaoVbo(7);
+    setupVertices(myTorus, 0, true);
+    setupVertices(myModel, 4);
 	setupShadowBuffers(window);
-}
-
-void Painter_8_1::setupVertices()
-{
-	// pyramid definition
-
-	int numPyramidVertices = myModel.getNumVertices();
-	std::vector<glm::vec3> vert = myModel.getVertices();
-	std::vector<glm::vec3> norm = myModel.getNormals();
-
-	std::vector<float> pyramidPvalues;
-	std::vector<float> pyramidNvalues;
-
-	for (int i = 0; i < numPyramidVertices; i++) {
-		pyramidPvalues.push_back((vert[i]).x);
-		pyramidPvalues.push_back((vert[i]).y);
-		pyramidPvalues.push_back((vert[i]).z);
-		pyramidNvalues.push_back((norm[i]).x);
-		pyramidNvalues.push_back((norm[i]).y);
-		pyramidNvalues.push_back((norm[i]).z);
-	}
-
-	// torus definition
-
-	int numTorusVertices = myTorus.getNumVertices();
-	int numTorusIndices = myTorus.getNumIndices();
-	std::vector<int> ind = myTorus.getIndices();
-	vert = myTorus.getVertices();
-	norm = myTorus.getNormals();
-
-	std::vector<float> torusPvalues;
-	std::vector<float> torusNvalues;
-
-	for (int i = 0; i < numTorusVertices; i++) {
-		torusPvalues.push_back(vert[i].x);
-		torusPvalues.push_back(vert[i].y);
-		torusPvalues.push_back(vert[i].z);
-		torusNvalues.push_back(norm[i].x);
-		torusNvalues.push_back(norm[i].y);
-		torusNvalues.push_back(norm[i].z);
-	}
-
-	vao = new GLuint[1];
-	vbo = new GLuint[5];
-
-	glGenVertexArrays(1, vao);
-	glBindVertexArray(vao[0]);
-	glGenBuffers(5, vbo);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-	glBufferData(GL_ARRAY_BUFFER, torusPvalues.size() * 4, &torusPvalues[0], GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-	glBufferData(GL_ARRAY_BUFFER, pyramidPvalues.size() * 4, &pyramidPvalues[0], GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-	glBufferData(GL_ARRAY_BUFFER, torusNvalues.size() * 4, &torusNvalues[0], GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[3]);
-	glBufferData(GL_ARRAY_BUFFER, pyramidNvalues.size() * 4, &pyramidNvalues[0], GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[4]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, ind.size() * 4, &ind[0], GL_STATIC_DRAW);
 }
 
 void Painter_8_1::display(GLFWwindow* window, double currentTime)
@@ -151,7 +86,7 @@ void Painter_8_1::passOne() {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[4]);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[3]);
 	glDrawElements(GL_TRIANGLES, myTorus.getNumIndices(), GL_UNSIGNED_INT, 0);
 
 	// draw the pyramid
@@ -163,7 +98,7 @@ void Painter_8_1::passOne() {
 	shadowMVP1 = lightPmatrix * lightVmatrix * mMat;
 	glUniformMatrix4fv(sLoc, 1, GL_FALSE, glm::value_ptr(shadowMVP1));
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[4]);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
@@ -215,7 +150,7 @@ void Painter_8_1::passTwo() {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[4]);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[3]);
 	glDrawElements(GL_TRIANGLES, myTorus.getNumIndices(), GL_UNSIGNED_INT, 0);
 
 	// draw the pyramid
@@ -235,11 +170,11 @@ void Painter_8_1::passTwo() {
 	glUniformMatrix4fv(nLoc, 1, GL_FALSE, glm::value_ptr(invTrMat));
 	glUniformMatrix4fv(sLoc, 1, GL_FALSE, glm::value_ptr(shadowMVP2));
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[4]);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[3]);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[6]);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(1);
 
