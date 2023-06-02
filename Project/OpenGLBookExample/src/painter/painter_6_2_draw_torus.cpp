@@ -19,8 +19,10 @@ void Painter_6_2::initWin(GLFWwindow* window)
 
     texture = Utils::loadTexture(tex0);
 
-    //setupVertices(myTorus);
-    setupVertices(myTorus, true);
+    //initVaoVbo(3);
+    //setupVertices(myTorus , 0);
+    initVaoVbo(4);
+    setupVertices(myTorus, 0, true);
 }
 
 void Painter_6_2::display(GLFWwindow* window, double currentTime)

@@ -15,7 +15,7 @@ protected:
 	GLint texture{};
 	const char* tex0 = "";
     const char* model0 = "";
-	ImportedModel myModel;
+	ImportedModel myModel{};
 
 private:
 	float posY = 0.0f;

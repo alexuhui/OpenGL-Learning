@@ -20,8 +20,9 @@ void Painter_6_3::initWin(GLFWwindow* window)
 
     texture = Utils::loadTexture(tex0);
 
+    initVaoVbo(3);
     myModel = ImportedModel(model0);
-    setupVertices(myModel);
+    setupVertices(myModel, 0);
 }
 
 void Painter_6_3::display(GLFWwindow* window, double currentTime)

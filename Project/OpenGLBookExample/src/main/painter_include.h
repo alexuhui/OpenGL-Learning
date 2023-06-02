@@ -15,3 +15,4 @@
 #include "../painter/painter_7_1_draw_torus_gold_gouraud.h"
 #include "../painter/painter_7_2_draw_torus_gold_phong.h"
 #include "../painter/painter_7_3_draw_torus_gold_blinn_phong.h"
+#include "../painter/painter_8_1_draw_shadow.h"

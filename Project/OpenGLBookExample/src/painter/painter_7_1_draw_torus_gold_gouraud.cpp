@@ -16,8 +16,9 @@ void Painter_7_1::initWin(GLFWwindow* window)
 
     renderingProgram = Utils::createShaderProgram(vert, frag);
 
+    initVaoVbo(4);
     texture = Utils::loadTexture(tex0);
-    setupVertices(myTorus, true);
+    setupVertices(myTorus, 0, true);
 }
 
 void Painter_7_1::display(GLFWwindow* window, double currentTime)

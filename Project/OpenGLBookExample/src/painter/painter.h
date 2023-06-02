@@ -33,6 +33,8 @@ protected:
 	const char* vert = "";
 	const char* frag = "";
 	GLuint renderingProgram = 0;
+	GLuint renderingProgram1 = 0;
+	GLuint renderingProgram2 = 0;
 
 	GLuint* vao{};
 	GLuint* vbo{};
@@ -43,11 +45,13 @@ protected:
 	virtual void setupVbo(float* bufData, int size, int index);
 	virtual void setupVbo(int* bufData, int size, int index);
 
-	virtual void setupVertices(Shape myShape);
-	virtual void setupVertices(Shape myShape, bool useIndexBuf);
-	virtual void setupVertices(ImportedModel myModel);
+	virtual void setupVertices(Shape myShape, int startIndex);
+	virtual void setupVertices(Shape myShape, int startIndex, bool useIndexBuf);
+	virtual void setupVertices(ImportedModel myModel, int startIndex);
 
 	virtual void installLights(int renderingProgram, glm::mat4 vMatrix, float* matAmb, float* matDif, float* matSpe, float matShi);
+	virtual void setupShadowBuffers(GLFWwindow* window);
+
 
 	int width = 0, height = 0;
 	float aspect = 1.0f;
@@ -61,7 +65,7 @@ protected:
 	GLuint nLoc = 0;
 	GLuint globalAmbLoc = 0, ambLoc = 0, diffLoc = 0, specLoc = 0, posLoc = 0, mambLoc = 0, mdiffLoc = 0, mspecLoc = 0, mshiLoc = 0;
 
-	GLuint mLoc = 0, vLoc = 0, mvLoc = 0, projLoc = 0;
+	GLuint mLoc = 0, vLoc = 0, mvLoc = 0, projLoc = 0, sLoc = 0;
 	glm::mat4 tMat{}, rMat{}, sMat{};
 	glm::mat4 mMat{}, vMat{}, pMat{}, mvMat{};
 	glm::mat4 invTrMat{};
@@ -81,6 +85,28 @@ protected:
 	float* matDif = Utils::goldDiffuse();
 	float* matSpe = Utils::goldSpecular();
 	float matShi = Utils::goldShininess();
+
+	// bronze material
+	float* bMatAmb = Utils::bronzeAmbient();
+	float* bMatDif = Utils::bronzeDiffuse();
+	float* bMatSpe = Utils::bronzeSpecular();
+	float bMatShi = Utils::bronzeShininess();
+
+	// shadow stuff
+	int scSizeX = 0, scSizeY = 0;
+	GLuint shadowTex{}, shadowBuffer{};
+	glm::mat4 lightVmatrix{};
+	glm::mat4 lightPmatrix{};
+	glm::mat4 shadowMVP1{};
+	glm::mat4 shadowMVP2{};
+	glm::mat4 bMat = glm::mat4(
+		0.5f, 0.0f, 0.0f, 0.0f,
+		0.0f, 0.5f, 0.0f, 0.0f,
+		0.0f, 0.0f, 0.5f, 0.0f,
+		0.5f, 0.5f, 0.5f, 1.0f);; //biases matrix
+	
+	glm::vec3 origin = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 
 private:
 	

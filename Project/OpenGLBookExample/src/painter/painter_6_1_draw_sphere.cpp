@@ -19,7 +19,8 @@ void Painter_6_1::initWin(GLFWwindow* window)
 
     texture = Utils::loadTexture(tex0);
 
-    setupVertices(mySphere);
+    initVaoVbo(3);
+    setupVertices(mySphere, 0);
 }
 
 void Painter_6_1::display(GLFWwindow* window, double currentTime)
