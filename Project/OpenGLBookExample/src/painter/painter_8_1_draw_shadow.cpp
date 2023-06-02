@@ -18,7 +18,7 @@ void Painter_8_1::initWin(GLFWwindow* window)
 {
     this->Painter::initWin(window);
 
-    cameraX = 0.0f, cameraY = 0.0f, cameraZ = 2.0f;
+    cameraX = 0.0f, cameraY = 0.2f, cameraZ = 6.0f;
 
 	renderingProgram1 = Utils::createShaderProgram(vert, frag);
 	renderingProgram2 = Utils::createShaderProgram(vert2, frag2);
@@ -119,7 +119,7 @@ void Painter_8_1::passTwo() {
 	sLoc = glGetUniformLocation(renderingProgram2, "shadowMVP");
 
 	// draw the torus
-	vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraLoc.x, -cameraLoc.y, -cameraLoc.z));
+	vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraX, -cameraY, -cameraZ));
 
 	mMat = glm::translate(glm::mat4(1.0f), torusLoc);
 	mMat = glm::rotate(mMat, Utils::toRadians(25.0f), glm::vec3(1.0f, 0.0f, 0.0f));

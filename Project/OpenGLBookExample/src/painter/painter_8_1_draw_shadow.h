@@ -25,7 +25,6 @@ protected:
 
     glm::vec3 torusLoc = glm::vec3(1.6f, 0.0f, -0.3f);
     glm::vec3 pyrLoc = glm::vec3(-1.0f, 0.1f, 0.3f);
-    glm::vec3 cameraLoc = glm::vec3(0.0f, 0.2f, 6.0f);
     glm::vec3 lightLoc = glm::vec3(-3.8f, 2.2f, 1.1f);
 
     void passOne();
