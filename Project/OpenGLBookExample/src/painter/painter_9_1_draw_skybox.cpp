@@ -8,7 +8,7 @@ void Painter_9_1::init()
     frag = "./shader/s_5_1_draw_pyramid_texture_frag.glsl";
 
 	tex0 = "./res/img/castleroof.jpg";
-	texSkybox = "./res/skybox/alien.jpg";
+	texSkybox = "./res/skybox/lake_island.jpg";
 
 	torLocX = 0.0f; torLocY = -0.75f; torLocZ = 0.0f;
 	cameraX = 0.0f; cameraY = 0.0f; cameraZ = 5.0f;
