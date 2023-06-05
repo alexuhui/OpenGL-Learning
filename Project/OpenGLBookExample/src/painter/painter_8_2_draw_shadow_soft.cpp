@@ -13,3 +13,14 @@ void Painter_8_2::init()
     tex0 = "./res/model/shuttle/spstob_1.jpg";
     model0 = "./res/model/pyr/pyr.obj";
 }
+
+int Painter_8_2::getWidth()
+{
+    return 1000;
+}
+
+int Painter_8_2::getHeight()
+{
+    return 1000;
+}
+

@@ -105,6 +105,9 @@
     <ClCompile Include="src\painter\painter_8_2_draw_shadow_soft.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_9_1_draw_skybox.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -177,6 +180,9 @@
       <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_8_2_draw_shadow_soft.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_9_1_draw_skybox.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>

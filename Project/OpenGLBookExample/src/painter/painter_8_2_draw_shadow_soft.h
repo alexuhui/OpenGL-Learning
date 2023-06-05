@@ -8,4 +8,7 @@ class Painter_8_2 : public Painter_8_1
 {
 public:
 	void init();
+
+	int getWidth();
+	int getHeight();
 };

@@ -153,6 +153,7 @@
     <ClCompile Include="src\painter\painter_7_3_draw_torus_gold_blinn_phong.cpp" />
     <ClCompile Include="src\painter\painter_8_1_draw_shadow.cpp" />
     <ClCompile Include="src\painter\painter_8_2_draw_shadow_soft.cpp" />
+    <ClCompile Include="src\painter\painter_9_1_draw_skybox.cpp" />
     <ClCompile Include="src\shape\shape.cpp" />
     <ClCompile Include="src\shape\sphere.cpp" />
     <ClCompile Include="src\shape\torus.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="src\painter\painter_7_3_draw_torus_gold_blinn_phong.h" />
     <ClInclude Include="src\painter\painter_8_1_draw_shadow.h" />
     <ClInclude Include="src\painter\painter_8_2_draw_shadow_soft.h" />
+    <ClInclude Include="src\painter\painter_9_1_draw_skybox.h" />
     <ClInclude Include="src\shape\shape.h" />
     <ClInclude Include="src\shape\sphere.h" />
     <ClInclude Include="src\shape\torus.h" />
