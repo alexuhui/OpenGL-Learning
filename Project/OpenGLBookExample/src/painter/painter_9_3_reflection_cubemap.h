@@ -3,7 +3,7 @@
 #include "painter.h"
 #include "../shape/torus.h"
 
-class Painter_9_2 : public Painter
+class Painter_9_3 : public Painter
 {
 public:
 	void init();

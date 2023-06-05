@@ -155,6 +155,7 @@
     <ClCompile Include="src\painter\painter_8_2_draw_shadow_soft.cpp" />
     <ClCompile Include="src\painter\painter_9_1_draw_skybox.cpp" />
     <ClCompile Include="src\painter\painter_9_2_draw_skybox_cubemap.cpp" />
+    <ClCompile Include="src\painter\painter_9_3_reflection_cubemap.cpp" />
     <ClCompile Include="src\shape\shape.cpp" />
     <ClCompile Include="src\shape\sphere.cpp" />
     <ClCompile Include="src\shape\torus.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="src\painter\painter_8_2_draw_shadow_soft.h" />
     <ClInclude Include="src\painter\painter_9_1_draw_skybox.h" />
     <ClInclude Include="src\painter\painter_9_2_draw_skybox_cubemap.h" />
+    <ClInclude Include="src\painter\painter_9_3_reflection_cubemap.h" />
     <ClInclude Include="src\shape\shape.h" />
     <ClInclude Include="src\shape\sphere.h" />
     <ClInclude Include="src\shape\torus.h" />
@@ -220,6 +222,8 @@
     <None Include="shader\s_8_2_shadow_soft_pass2_frag.glsl" />
     <None Include="shader\s_9_2_cubemap_frag.glsl" />
     <None Include="shader\s_9_2_cubemap_vert.glsl" />
+    <None Include="shader\s_9_3_reflection_cubemap_frag.glsl" />
+    <None Include="shader\s_9_3_reflection_cubemap_vert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
