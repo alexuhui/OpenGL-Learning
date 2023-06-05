@@ -59,6 +59,7 @@ int main(void) {
         else if (chapter == 9)
         {
             if (section == 1) { painter = new Painter_9_1(); draw(); continue; }
+            if (section == 2) { painter = new Painter_9_2(); draw(); continue; }
         }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;
@@ -72,6 +73,7 @@ void draw()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
+    painter->init();
     GLFWwindow* window = glfwCreateWindow(painter->getWidth(), painter->getHeight(), painter->getTitle(), NULL, NULL);
     glfwSetWindowSizeCallback(window, windowReshapeCallback);
 
@@ -79,7 +81,6 @@ void draw()
     if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
     glfwSwapInterval(1);
 
-    painter->init();
     painter->initWin(window);
 
     while (!glfwWindowShouldClose(window)) {

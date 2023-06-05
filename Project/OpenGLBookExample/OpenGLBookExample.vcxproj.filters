@@ -108,6 +108,9 @@
     <ClCompile Include="src\painter\painter_9_1_draw_skybox.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_9_2_draw_skybox_cubemap.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -185,6 +188,9 @@
     <ClInclude Include="src\painter\painter_9_1_draw_skybox.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
+    <ClInclude Include="src\painter\painter_9_2_draw_skybox_cubemap.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader\s_2_2_draw_point_frag.glsl">
@@ -247,6 +253,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_8_2_shadow_soft_pass2_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_9_2_cubemap_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_9_2_cubemap_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

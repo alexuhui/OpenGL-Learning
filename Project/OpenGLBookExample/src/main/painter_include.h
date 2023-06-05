@@ -18,3 +18,4 @@
 #include "../painter/painter_8_1_draw_shadow.h"
 #include "../painter/painter_8_2_draw_shadow_soft.h"
 #include "../painter/painter_9_1_draw_skybox.h"
+#include "../painter/painter_9_2_draw_skybox_cubemap.h"
