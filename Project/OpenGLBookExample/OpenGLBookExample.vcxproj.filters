@@ -117,6 +117,9 @@
     <ClCompile Include="src\painter\painter_10_1_normal_map_procedure.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_10_2_normal_map_texture.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -203,6 +206,9 @@
     <ClInclude Include="src\painter\painter_10_1_normal_map_procedure.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
+    <ClInclude Include="src\painter\painter_10_2_normal_map_texture.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader\s_2_2_draw_point_frag.glsl">
@@ -283,6 +289,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_10_1_normal_map_procedure_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_10_2_normal_map_texture_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_10_2_normal_map_texture_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

@@ -27,8 +27,9 @@ void Painter_8_1::initWin(GLFWwindow* window)
 	myModel = ImportedModel(model0);
 
     initVaoVbo(7);
-    setupVertices(myTorus, 0, true);
-    setupVertices(myModel, 4);
+	int index = 0;
+	index += setupVertices(myTorus, index, true);
+	index += setupVertices(myModel, index);
 	setupShadowBuffers(window);
 }
 

@@ -74,16 +74,18 @@ void  Painter::setupVbo(int* bufData, int size, int index)
 /// 直接把顶点属性对应到每个顶点索引上
 /// </summary>
 /// <param name="myShape"></param>
-void Painter::setupVertices(Shape myShape, int startIndex)
+int Painter::setupVertices(Shape myShape, int startIndex)
 {
     std::vector<int> ind = myShape.getIndices();
     std::vector<glm::vec3> vert = myShape.getVertices();
     std::vector<glm::vec2> tex = myShape.getTexCoords();
     std::vector<glm::vec3> norm = myShape.getNormals();
+    std::vector<glm::vec3> tangent = myShape.getTangents();
 
     std::vector<float> pvalues;
     std::vector<float> tvalues;
     std::vector<float> nvalues;
+    std::vector<float> tanvalues;
 
     int numIndices = myShape.getNumIndices();
     for (int i = 0; i < numIndices; i++) {
@@ -95,11 +97,17 @@ void Painter::setupVertices(Shape myShape, int startIndex)
         nvalues.push_back((norm[ind[i]]).x);
         nvalues.push_back((norm[ind[i]]).y);
         nvalues.push_back((norm[ind[i]]).z);
+        tanvalues.push_back((tangent[ind[i]]).x);
+        tanvalues.push_back((tangent[ind[i]]).y);
+        tanvalues.push_back((tangent[ind[i]]).z);
     }
 
     setupVbo(&pvalues[0], pvalues.size() * 4, startIndex);
     setupVbo(&tvalues[0], tvalues.size() * 4, startIndex + 1);
     setupVbo(&nvalues[0], nvalues.size() * 4, startIndex + 2);
+    setupVbo(&tanvalues[0], tanvalues.size() * 4, startIndex + 3);
+
+    return 4;
 }
 
 /// <summary>
@@ -108,12 +116,11 @@ void Painter::setupVertices(Shape myShape, int startIndex)
 /// </summary>
 /// <param name="myShape"></param>
 /// <param name="useIndexBuf"></param>
-void Painter::setupVertices(Shape myShape, int startIndex, bool useIndexBuf)
+int Painter::setupVertices(Shape myShape, int startIndex, bool useIndexBuf)
 {
     if (!useIndexBuf)
     {
-        setupVertices(myShape, startIndex);
-        return;
+        return setupVertices(myShape, startIndex);
     }
 
     std::vector<int> ind = myShape.getIndices();
@@ -140,9 +147,11 @@ void Painter::setupVertices(Shape myShape, int startIndex, bool useIndexBuf)
     setupVbo(&tvalues[0], tvalues.size() * 4, startIndex + 1);
     setupVbo(&nvalues[0], nvalues.size() * 4, startIndex + 2);
     setupVbo(&ind[0], ind.size() * 4, startIndex + 3);
+
+    return 4;
 }
 
-void Painter::setupVertices(ImportedModel myModel, int startIndex)
+int Painter::setupVertices(ImportedModel myModel, int startIndex)
 {
     std::vector<glm::vec3> vert = myModel.getVertices();
     std::vector<glm::vec2> tex = myModel.getTextureCoords();
@@ -154,7 +163,7 @@ void Painter::setupVertices(ImportedModel myModel, int startIndex)
     std::vector<float> nvalues;       // 法向量
 
     if (numObjVertices == 0)
-        return;
+        return 0;
 
     for (int i = 0; i < numObjVertices; i++) {
         pvalues.push_back((vert[i]).x);
@@ -170,6 +179,8 @@ void Painter::setupVertices(ImportedModel myModel, int startIndex)
     setupVbo(&pvalues[0], pvalues.size() * 4, startIndex);
     setupVbo(&tvalues[0], tvalues.size() * 4, startIndex + 1);
     setupVbo(&nvalues[0], nvalues.size() * 4, startIndex + 2);
+
+    return 3;
 }
 
 void Painter::installLights(int renderingProgram, glm::mat4 vMatrix, float * matAmb, float * matDif, float* matSpe, float matShi) {

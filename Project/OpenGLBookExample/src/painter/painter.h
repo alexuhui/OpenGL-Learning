@@ -45,9 +45,9 @@ protected:
 	virtual void setupVbo(float* bufData, int size, int index);
 	virtual void setupVbo(int* bufData, int size, int index);
 
-	virtual void setupVertices(Shape myShape, int startIndex);
-	virtual void setupVertices(Shape myShape, int startIndex, bool useIndexBuf);
-	virtual void setupVertices(ImportedModel myModel, int startIndex);
+	virtual int setupVertices(Shape myShape, int startIndex);
+	virtual int setupVertices(Shape myShape, int startIndex, bool useIndexBuf);
+	virtual int setupVertices(ImportedModel myModel, int startIndex);
 
 	virtual void installLights(int renderingProgram, glm::mat4 vMatrix, float* matAmb, float* matDif, float* matSpe, float matShi);
 	virtual void setupShadowBuffers(GLFWwindow* window);
@@ -91,6 +91,12 @@ protected:
 	float* bMatDif = Utils::bronzeDiffuse();
 	float* bMatSpe = Utils::bronzeSpecular();
 	float bMatShi = Utils::bronzeShininess();
+
+	// silver material
+	float* sMatAmb = Utils::silverAmbient();
+	float* sMatDif = Utils::silverDiffuse();
+	float* sMatSpe = Utils::silverSpecular();
+	float sMatShi = Utils::silverShininess();
 
 	// shadow stuff
 	int scSizeX = 0, scSizeY = 0;
