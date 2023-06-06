@@ -68,13 +68,13 @@ void main(void)
 	// angle between the view vector and reflected light:
 	float cosPhi = dot(H,N);
 
-	vec4 diffuse = texture(mainTex, tc);
-//	fragColor = vec4(diffuse, 1.0);return;
+	vec4 tex = texture(mainTex, tc);
+//	fragColor = vec4(tex, 1.0);return;
 
 	// compute ADS contributions (per pixel):
 	fragColor = globalAmbient * material.ambient
 	+ light.ambient * material.ambient
-	+ light.diffuse * diffuse * max(cosTheta,0.0)
-	+ light.specular  * material.specular
+	+ light.diffuse * tex * max(cosTheta,0.0)
+	+ light.specular * tex * material.specular
 		* pow(max(cosPhi,0.0), material.shininess*3.0);
 }
