@@ -13,6 +13,7 @@ layout (binding=1) uniform sampler2D h;	// for height map
 
 void main(void)
 {	
+	// 沿法线方向，修改顶点高度
 	vec4 p = vec4(vertPos,1.0) + vec4((vertNormal*((texture(h, texCoord).r)/5.0f)),1.0f);
 	tc = texCoord;
 	gl_Position = proj_matrix * mv_matrix * p;
