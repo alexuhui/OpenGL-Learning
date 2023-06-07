@@ -22,3 +22,4 @@
 #include "../painter/painter_9_3_reflection_cubemap.h"
 #include "../painter/painter_10_1_normal_map_procedure.h"
 #include "../painter/painter_10_2_normal_map_texture.h"
+#include "../painter/painter_10_4_height_map.h"
