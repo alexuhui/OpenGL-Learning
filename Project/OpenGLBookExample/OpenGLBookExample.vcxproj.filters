@@ -123,6 +123,9 @@
     <ClCompile Include="src\painter\painter_10_4_height_map.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_10_5_height_map_earth.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -213,6 +216,9 @@
       <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_10_4_height_map.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_10_5_height_map_earth.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -307,6 +313,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_10_4_height_map_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_10_5_height_map_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_10_5_height_map_frag.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

@@ -2,9 +2,9 @@
 
 #include "painter.h"
 
-#include "..\shape\torus.h"
+#include "..\shape\sphere.h"
 
-class Painter_10_4 : public Painter
+class Painter_10_5 : public Painter
 {
 public:
 	void init();
@@ -12,11 +12,12 @@ public:
 	void display(GLFWwindow* window, double currentTime);
 
 protected:
-	GLint texture{}, heightMap{};
+	GLint texture{}, heightMap{}, normalMap{};
 	const char* tex0 = "";
+	const char* tex_normal = "";
 	const char* tex_height = "";
-    const char* model0 = "";
-	ImportedModel myModel{};
+	
+	Sphere mySphere = Sphere(96);
 
 private:
 
