@@ -26,3 +26,4 @@
 #include "../painter/painter_10_5_height_map_earth.h"
 #include "../painter/painter_12_1_tessellation.h"
 #include "../painter/painter_12_2_tessellation_bezier.h"
+#include "../painter/painter_12_3_tessellation_height_map.h"
