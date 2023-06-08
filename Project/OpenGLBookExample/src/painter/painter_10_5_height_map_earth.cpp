@@ -87,6 +87,6 @@ void Painter_10_5::display(GLFWwindow* window, double currentTime)
 	glFrontFace(GL_CCW);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
-
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawArrays(GL_TRIANGLES, 0, mySphere.getNumIndices());
 }
