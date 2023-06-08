@@ -135,6 +135,9 @@
     <ClCompile Include="src\painter\painter_12_3_tessellation_height_map.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_12_4_tessellation_height_map_instanced.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -237,6 +240,9 @@
       <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_12_3_tessellation_height_map.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_12_4_tessellation_height_map_instanced.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -373,6 +379,15 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_12_3_tessellation_height_map_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_12_4_tessellation_height_map_instanced_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_12_4_tessellation_height_map_instanced_tess_ctrl.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_12_4_tessellation_height_map_instanced_tess_eval.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>
