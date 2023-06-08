@@ -333,10 +333,10 @@
     <None Include="shader\s_12_1_tessellation_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
-    <None Include="shader\s_12_1_tessellation_tessE.glsl">
+    <None Include="shader\s_12_1_tessellation_tess_eval.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
-    <None Include="shader\s_12_1_tessellation_tessC.glsl">
+    <None Include="shader\s_12_1_tessellation_tess_ctrl.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

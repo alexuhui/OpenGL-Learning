@@ -5,8 +5,8 @@ void Painter_12_1::init()
     title = "Example 10.4";
 
     vert = "./shader/s_12_1_tessellation_vert.glsl";
-	tessC = "./shader/s_12_1_tessellation_tessC.glsl";
-	tessE = "./shader/s_12_1_tessellation_tessE.glsl";
+	tessC = "./shader/s_12_1_tessellation_tess_ctrl.glsl";
+	tessE = "./shader/s_12_1_tessellation_tess_eval.glsl";
     frag = "./shader/s_12_1_tessellation_frag.glsl";
 }
 

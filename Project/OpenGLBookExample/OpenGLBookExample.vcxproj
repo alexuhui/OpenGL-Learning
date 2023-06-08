@@ -221,8 +221,8 @@
     <None Include="shader\s_10_5_height_map_frag.glsl" />
     <None Include="shader\s_10_5_height_map_vert.glsl" />
     <None Include="shader\s_12_1_tessellation_frag.glsl" />
-    <None Include="shader\s_12_1_tessellation_tessC.glsl" />
-    <None Include="shader\s_12_1_tessellation_tessE.glsl" />
+    <None Include="shader\s_12_1_tessellation_tess_ctrl.glsl" />
+    <None Include="shader\s_12_1_tessellation_tess_eval.glsl" />
     <None Include="shader\s_12_1_tessellation_vert.glsl" />
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
