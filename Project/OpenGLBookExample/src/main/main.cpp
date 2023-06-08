@@ -69,6 +69,10 @@ int main(void) {
             if (section == 4) { painter = new Painter_10_4(); draw(); continue; }
             if (section == 5) { painter = new Painter_10_5(); draw(); continue; }
         }
+        else if(chapter == 12)
+        {
+            if (section == 1) { painter = new Painter_12_1(); draw(); continue; }
+        }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;
         cout << endl;

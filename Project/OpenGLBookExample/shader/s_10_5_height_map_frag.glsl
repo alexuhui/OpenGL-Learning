@@ -48,7 +48,8 @@ vec3 CalcBumpedNormal()
 }
 
 void main(void)
-{	// normalize the light, normal, and view vectors:
+{	
+	// normalize the light, normal, and view vectors:
 	vec3 L = normalize(varyingLightDir);
 	vec3 V = normalize(-varyingVertPos);
 

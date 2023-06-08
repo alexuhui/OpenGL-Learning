@@ -36,7 +36,8 @@ uniform mat4 proj_matrix;
 uniform mat4 norm_matrix;
 
 void main(void)
-{	varyingNormal = (norm_matrix * vec4(vertNormal,1.0)).xyz;
+{	
+	varyingNormal = (norm_matrix * vec4(vertNormal,1.0)).xyz;
 	varyingTangent = (norm_matrix * vec4(vertTangent,1.0)).xyz;
 	
 	vec4 P1 = vec4(vertPos, 1.0);
