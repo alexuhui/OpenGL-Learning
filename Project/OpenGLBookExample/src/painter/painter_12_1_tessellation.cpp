@@ -14,8 +14,7 @@ void Painter_12_1::initWin(GLFWwindow* window)
 {
     this->Painter::initWin(window);
 
-    cameraX = 0.0f, cameraY = 0.0f, cameraZ = 2.0f;
-	currentLightPos = glm::vec3(3.0f, 2.0f, 3.0f);
+    cameraX = 0.5f, cameraY = -0.5f, cameraZ = 2.0f;
 
     renderingProgram = Utils::createShaderProgram(vert, tessC, tessE, frag);
 
