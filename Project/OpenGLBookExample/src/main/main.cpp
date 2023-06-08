@@ -72,6 +72,7 @@ int main(void) {
         else if(chapter == 12)
         {
             if (section == 1) { painter = new Painter_12_1(); draw(); continue; }
+            if (section == 2) { painter = new Painter_12_2(); draw(); continue; }
         }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;

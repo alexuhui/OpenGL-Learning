@@ -2,7 +2,7 @@
 
 void Painter_12_1::init()
 {
-    title = "Example 10.4";
+    title = "Example 12.1";
 
     vert = "./shader/s_12_1_tessellation_vert.glsl";
 	tessC = "./shader/s_12_1_tessellation_tess_ctrl.glsl";

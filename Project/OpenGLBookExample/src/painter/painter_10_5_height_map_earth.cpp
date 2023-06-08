@@ -2,7 +2,7 @@
 
 void Painter_10_5::init()
 {
-    title = "Example 10.4";
+    title = "Example 10.5";
 
     vert = "./shader/s_10_5_height_map_vert.glsl";
     frag = "./shader/s_10_5_height_map_frag.glsl";

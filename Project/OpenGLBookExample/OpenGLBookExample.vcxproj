@@ -141,6 +141,7 @@
     <ClCompile Include="src\painter\painter_10_4_height_map.cpp" />
     <ClCompile Include="src\painter\painter_10_5_height_map_earth.cpp" />
     <ClCompile Include="src\painter\painter_12_1_tessellation.cpp" />
+    <ClCompile Include="src\painter\painter_12_2_tessellation_bezier.cpp" />
     <ClCompile Include="src\painter\painter_2_1_draw_bg.cpp" />
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp" />
     <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="src\painter\painter_10_4_height_map.h" />
     <ClInclude Include="src\painter\painter_10_5_height_map_earth.h" />
     <ClInclude Include="src\painter\painter_12_1_tessellation.h" />
+    <ClInclude Include="src\painter\painter_12_2_tessellation_bezier.h" />
     <ClInclude Include="src\painter\painter_2_1_draw_bg.h" />
     <ClInclude Include="src\painter\painter_2_2_draw_point.h" />
     <ClInclude Include="src\painter\painter_2_5_draw_triangle.h" />
@@ -224,6 +226,10 @@
     <None Include="shader\s_12_1_tessellation_tess_ctrl.glsl" />
     <None Include="shader\s_12_1_tessellation_tess_eval.glsl" />
     <None Include="shader\s_12_1_tessellation_vert.glsl" />
+    <None Include="shader\s_12_2_tessellation_bezier_frag.glsl" />
+    <None Include="shader\s_12_2_tessellation_bezier_tess_ctrl.glsl" />
+    <None Include="shader\s_12_2_tessellation_bezier_tess_eval.glsl" />
+    <None Include="shader\s_12_2_tessellation_bezier_vert.glsl" />
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
     <None Include="shader\s_4_1_draw_cube_frag.glsl" />
