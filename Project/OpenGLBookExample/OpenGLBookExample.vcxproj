@@ -145,6 +145,7 @@
     <ClCompile Include="src\painter\painter_12_3_tessellation_height_map.cpp" />
     <ClCompile Include="src\painter\painter_12_4_tessellation_height_map_instanced.cpp" />
     <ClCompile Include="src\painter\painter_12_5_tessellation_height_map_light.cpp" />
+    <ClCompile Include="src\painter\painter_12_6_tessellation_height_map_lod.cpp" />
     <ClCompile Include="src\painter\painter_2_1_draw_bg.cpp" />
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp" />
     <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="src\painter\painter_12_3_tessellation_height_map.h" />
     <ClInclude Include="src\painter\painter_12_4_tessellation_height_map_instanced.h" />
     <ClInclude Include="src\painter\painter_12_5_tessellation_height_map_light.h" />
+    <ClInclude Include="src\painter\painter_12_6_tessellation_height_map_lod.h" />
     <ClInclude Include="src\painter\painter_2_1_draw_bg.h" />
     <ClInclude Include="src\painter\painter_2_2_draw_point.h" />
     <ClInclude Include="src\painter\painter_2_5_draw_triangle.h" />
@@ -247,6 +249,10 @@
     <None Include="shader\s_12_5_tessellation_height_map_light_tess_ctrl.glsl" />
     <None Include="shader\s_12_5_tessellation_height_map_light_tess_eval.glsl" />
     <None Include="shader\s_12_5_tessellation_height_map_light_vert.glsl" />
+    <None Include="shader\s_12_6_tessellation_height_map_lod_frag.glsl" />
+    <None Include="shader\s_12_6_tessellation_height_map_lod_tess_ctrl.glsl" />
+    <None Include="shader\s_12_6_tessellation_height_map_lod_tess_eval.glsl" />
+    <None Include="shader\s_12_6_tessellation_height_map_lod_vert.glsl" />
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
     <None Include="shader\s_4_1_draw_cube_frag.glsl" />
