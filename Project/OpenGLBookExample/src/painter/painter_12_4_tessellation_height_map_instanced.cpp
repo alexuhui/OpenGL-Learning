@@ -9,7 +9,8 @@ void Painter_12_4::init()
 	tessE = "./shader/s_12_4_tessellation_height_map_instanced_tess_eval.glsl";
     frag = "./shader/s_12_3_tessellation_height_map_frag.glsl";
 
-	/tex0 = "./res/img/square_moon/squareMoonMap.jpg";
+	tex0 = "./res/img/moon.jpg";
+	//tex0 = "./res/img/square_moon/squareMoonMap.jpg";
 	//tex0 = "./res/img/square_moon/squareMoonBump.jpg";
 }
 
