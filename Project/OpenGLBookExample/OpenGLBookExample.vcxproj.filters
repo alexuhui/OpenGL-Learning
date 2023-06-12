@@ -147,6 +147,9 @@
     <ClCompile Include="src\painter\painter_13_1_geometry.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_13_2_geometry_explode.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -261,6 +264,9 @@
       <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_13_1_geometry.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_13_2_geometry_explode.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -439,6 +445,15 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_13_1_geometry_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_13_2_geometry_explode_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_13_2_geometry_explode_geom.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_13_2_geometry_explode_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>
