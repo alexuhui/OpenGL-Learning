@@ -33,7 +33,8 @@ uniform mat4 norm_matrix;
 float sLen = 0.1;
 
 void main(void)
-{	// offset the three triangle vertices by the surface normal
+{	
+	// offset the three triangle vertices by the surface normal
 	vec3 op0 = gl_in[0].gl_Position.xyz;
 	vec3 op1 = gl_in[1].gl_Position.xyz;
 	vec3 op2 = gl_in[2].gl_Position.xyz;
