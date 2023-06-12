@@ -2,7 +2,7 @@
 
 void Painter_13_2::init()
 {
-    title = "Example 13.1";
+    title = "Example 13.2";
 
     vert = "./shader/s_13_2_geometry_explode_vert.glsl";
     frag = "./shader/s_13_2_geometry_explode_frag.glsl";

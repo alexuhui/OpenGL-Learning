@@ -149,6 +149,7 @@
     <ClCompile Include="src\painter\painter_13_1_geometry.cpp" />
     <ClCompile Include="src\painter\painter_13_2_geometry_explode.cpp" />
     <ClCompile Include="src\painter\painter_13_3_geometry_delete.cpp" />
+    <ClCompile Include="src\painter\painter_13_4_geometry_add.cpp" />
     <ClCompile Include="src\painter\painter_2_1_draw_bg.cpp" />
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp" />
     <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="src\painter\painter_13_1_geometry.h" />
     <ClInclude Include="src\painter\painter_13_2_geometry_explode.h" />
     <ClInclude Include="src\painter\painter_13_3_geometry_delete.h" />
+    <ClInclude Include="src\painter\painter_13_4_geometry_add.h" />
     <ClInclude Include="src\painter\painter_2_1_draw_bg.h" />
     <ClInclude Include="src\painter\painter_2_2_draw_point.h" />
     <ClInclude Include="src\painter\painter_2_5_draw_triangle.h" />
@@ -266,6 +268,9 @@
     <None Include="shader\s_13_2_geometry_explode_geom.glsl" />
     <None Include="shader\s_13_2_geometry_explode_vert.glsl" />
     <None Include="shader\s_13_3_geometry_delete_geom.glsl" />
+    <None Include="shader\s_13_4_geometry_add_frag.glsl" />
+    <None Include="shader\s_13_4_geometry_add_geom.glsl" />
+    <None Include="shader\s_13_4_geometry_add_vert.glsl" />
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
     <None Include="shader\s_4_1_draw_cube_frag.glsl" />
