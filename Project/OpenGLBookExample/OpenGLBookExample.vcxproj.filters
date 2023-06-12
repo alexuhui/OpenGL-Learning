@@ -486,9 +486,6 @@
     <None Include="shader\s_13_4_geometry_add_frag.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
-    <None Include="shader\s_13_5_geometry_change_frag.glsl">
-      <Filter>资源文件\shader</Filter>
-    </None>
     <None Include="shader\s_13_5_geometry_change_geom.glsl">
       <Filter>资源文件\shader</Filter>
     </None>

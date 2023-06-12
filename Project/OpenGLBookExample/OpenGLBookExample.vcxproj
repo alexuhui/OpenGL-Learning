@@ -273,7 +273,6 @@
     <None Include="shader\s_13_4_geometry_add_frag.glsl" />
     <None Include="shader\s_13_4_geometry_add_geom.glsl" />
     <None Include="shader\s_13_4_geometry_add_vert.glsl" />
-    <None Include="shader\s_13_5_geometry_change_frag.glsl" />
     <None Include="shader\s_13_5_geometry_change_geom.glsl" />
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
