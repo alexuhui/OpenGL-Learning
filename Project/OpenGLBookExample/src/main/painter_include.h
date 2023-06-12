@@ -34,3 +34,4 @@
 #include "../painter/painter_13_2_geometry_explode.h"
 #include "../painter/painter_13_3_geometry_delete.h"
 #include "../painter/painter_13_4_geometry_add.h"
+#include "../painter/painter_13_5_geometry_change.h"
