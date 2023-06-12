@@ -32,3 +32,4 @@
 #include "../painter/painter_12_6_tessellation_height_map_lod.h"
 #include "../painter/painter_13_1_geometry.h"
 #include "../painter/painter_13_2_geometry_explode.h"
+#include "../painter/painter_13_3_geometry_delete.h"
