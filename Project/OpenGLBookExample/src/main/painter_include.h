@@ -30,3 +30,4 @@
 #include "../painter/painter_12_4_tessellation_height_map_instanced.h"
 #include "../painter/painter_12_5_tessellation_height_map_light.h"
 #include "../painter/painter_12_6_tessellation_height_map_lod.h"
+#include "../painter/painter_13_1_geometry.h"
