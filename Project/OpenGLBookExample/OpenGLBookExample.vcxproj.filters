@@ -165,6 +165,9 @@
     <ClCompile Include="src\painter\painter_14_2_blend.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_14_3_clip.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -297,6 +300,9 @@
       <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_14_2_blend.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_14_3_clip.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -511,6 +517,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_14_2_blend_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_3_clip_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_3_clip_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

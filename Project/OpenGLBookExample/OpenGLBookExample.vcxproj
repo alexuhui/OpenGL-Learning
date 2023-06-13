@@ -153,6 +153,7 @@
     <ClCompile Include="src\painter\painter_13_5_geometry_change.cpp" />
     <ClCompile Include="src\painter\painter_14_1_fog.cpp" />
     <ClCompile Include="src\painter\painter_14_2_blend.cpp" />
+    <ClCompile Include="src\painter\painter_14_3_clip.cpp" />
     <ClCompile Include="src\painter\painter_2_1_draw_bg.cpp" />
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp" />
     <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="src\painter\painter_13_5_geometry_change.h" />
     <ClInclude Include="src\painter\painter_14_1_fog.h" />
     <ClInclude Include="src\painter\painter_14_2_blend.h" />
+    <ClInclude Include="src\painter\painter_14_3_clip.h" />
     <ClInclude Include="src\painter\painter_2_1_draw_bg.h" />
     <ClInclude Include="src\painter\painter_2_2_draw_point.h" />
     <ClInclude Include="src\painter\painter_2_5_draw_triangle.h" />
@@ -282,6 +284,8 @@
     <None Include="shader\s_14_1_fog_vert.glsl" />
     <None Include="shader\s_14_2_blend_frag.glsl" />
     <None Include="shader\s_14_2_blend_vert.glsl" />
+    <None Include="shader\s_14_3_clip_frag.glsl" />
+    <None Include="shader\s_14_3_clip_vert.glsl" />
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
     <None Include="shader\s_4_1_draw_cube_frag.glsl" />
