@@ -36,3 +36,4 @@
 #include "../painter/painter_13_4_geometry_add.h"
 #include "../painter/painter_13_5_geometry_change.h"
 #include "../painter/painter_14_1_fog.h"
+#include "../painter/painter_14_2_blend.h"
