@@ -159,6 +159,9 @@
     <ClCompile Include="src\painter\painter_13_5_geometry_change.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_14_1_fog.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -285,6 +288,9 @@
       <Filter>源文件\painter</Filter>
     </ClInclude>
     <ClInclude Include="src\painter\painter_13_5_geometry_change.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_14_1_fog.h">
       <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
@@ -487,6 +493,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_13_5_geometry_change_geom.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_1_fog_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_1_fog_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>
