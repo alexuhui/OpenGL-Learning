@@ -38,3 +38,4 @@
 #include "../painter/painter_14_1_fog.h"
 #include "../painter/painter_14_2_blend.h"
 #include "../painter/painter_14_3_clip.h"
+#include "../painter/painter_14_4_3d_texture.h"

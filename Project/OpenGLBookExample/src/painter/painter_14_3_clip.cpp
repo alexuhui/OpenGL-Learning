@@ -63,14 +63,17 @@ void Painter_14_3::display(GLFWwindow* window, double currentTime)
 	glDepthFunc(GL_LEQUAL);
 
 	glEnable(GL_CLIP_DISTANCE0);
+	glEnable(GL_CLIP_DISTANCE1);
 
 	glUniform1i(flipLoc, 1.0f);
 	glFrontFace(GL_CCW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[3]);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // FILL or LINE
 	glDrawElements(GL_TRIANGLES, myTorus.getNumIndices(), GL_UNSIGNED_INT, 0);
 
 	glUniform1i(flipLoc, -1.0f);
 	glFrontFace(GL_CW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[3]);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // FILL or LINE
 	glDrawElements(GL_TRIANGLES, myTorus.getNumIndices(), GL_UNSIGNED_INT, 0);
 }

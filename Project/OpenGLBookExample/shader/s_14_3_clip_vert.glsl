@@ -31,6 +31,7 @@ uniform mat4 norm_matrix;
 uniform int flipNormal;
 
 vec4 clip_plane = vec4(0.0, -1.0, -2.0, 0.5);
+vec4 clip_plane2 = vec4(0.0, -1.0, 1.0, 0.2);
 
 void main(void)
 {	
@@ -44,7 +45,8 @@ void main(void)
 		normalize(normalize(varyingLightDir)
 		+ normalize(-varyingVertPos)).xyz;
 	
-	gl_ClipDistance[0] = dot(clip_plane.xyz, vertPos) + clip_plane.w;
+	gl_ClipDistance[0] = dot(clip_plane.xyz, vertPos) - clip_plane.w;
+	//gl_ClipDistance[1] = dot(clip_plane2.xyz, vertPos) + clip_plane.w;
 
 	gl_Position = proj_matrix * mv_matrix * vec4(vertPos,1.0);
 }
