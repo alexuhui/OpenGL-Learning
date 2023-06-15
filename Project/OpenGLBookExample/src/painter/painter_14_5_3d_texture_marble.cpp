@@ -8,6 +8,9 @@ void Painter_14_5::init()
     frag = "./shader/s_14_5_3d_texture_marble_frag.glsl";
 
 	model0 = "./res/model/dolphinLowPoly/dolphinLowPoly.obj";
+
+	//3d纹理
+	noiseTexPath = "./res/3dtex/marble.3dtex";
 }
 
 void Painter_14_5::initWin(GLFWwindow* window)
@@ -19,15 +22,6 @@ void Painter_14_5::initWin(GLFWwindow* window)
 	renderingProgram = Utils::createShaderProgram(vert, frag);
 	dolphinObj = ImportedModel(model0);
 
-	noise = new double** [noiseHeight];
-	for (int i = 0; i < noiseHeight; i++)
-	{
-		noise[i] = new double* [noiseWidth];
-		for (int j = 0; j < noiseWidth; j++)
-		{
-			noise[i][j] = new double[noiseDepth];
-		}
-	}
 	currentLightPos = glm::vec3(-2.0f, 3.0f, 0.6f);
 
 	stopwatchStart();
@@ -38,9 +32,6 @@ void Painter_14_5::initWin(GLFWwindow* window)
 	setupVertices(dolphinObj, 0);
 	stopwatch("setupVertices");
 	
-	generateNoise();
-	stopwatch("generateNoise");
-
 	noiseTexture = buildNoiseTexture();
 	stopwatch("buildNoiseTexture");
 }
@@ -85,7 +76,7 @@ void Painter_14_5::display(GLFWwindow* window, double currentTime)
 	glDepthFunc(GL_LEQUAL);
 	glDrawArrays(GL_TRIANGLES, 0, dolphinObj.getNumVertices());
 
-	std::cout << "glDrawArrays Elapsed: " << myWatch.stepElapsed() << " milliseconds." << std::endl;
+	//stopwatch("display");
 }
 
 void Painter_14_5::fillDataArray(GLubyte data[]) {
@@ -112,6 +103,11 @@ void Painter_14_5::fillDataArray(GLubyte data[]) {
 			}
 		}
 	}
+	stopwatch("fillDataArray");
+
+	int size = noiseWidth * noiseHeight * noiseDepth * 4;
+	Utils::save3DTexture(noiseTexPath, data, size, noiseHeight, noiseWidth, noiseHeight);
+	stopwatch("save3DTexture");
 }
 
 double Painter_14_5::turbulence(double x, double y, double z, double size) {
@@ -156,8 +152,14 @@ GLuint Painter_14_5::buildNoiseTexture() {
 	GLubyte* data = new GLubyte[noiseHeight * noiseWidth * noiseDepth * 4];
 
 	stopwatchStart();
-	fillDataArray(data);
-	stopwatch("fillDataArray");
+	bool read = Utils::read3DTexture(noiseTexPath, data, noiseHeight, noiseWidth, noiseDepth);
+	stopwatch("read DataArray");
+	if (!read)
+	{
+		generateNoise();
+		stopwatch("generateNoise");
+		fillDataArray(data);
+	}
 
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_3D, textureID);
@@ -170,8 +172,11 @@ GLuint Painter_14_5::buildNoiseTexture() {
 }
 
 void Painter_14_5::generateNoise() {
+	noise = new double** [noiseHeight];
 	for (int x = 0; x < noiseHeight; x++) {
+		noise[x] = new double* [noiseWidth];
 		for (int y = 0; y < noiseWidth; y++) {
+			noise[x][y] = new double[noiseDepth];
 			for (int z = 0; z < noiseDepth; z++) {
 				noise[x][y][z] = (double)rand() / (RAND_MAX + 1.0);
 			}

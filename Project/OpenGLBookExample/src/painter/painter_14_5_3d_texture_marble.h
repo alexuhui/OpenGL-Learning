@@ -19,11 +19,12 @@ protected:
 	ImportedModel dolphinObj{};
 
 private:
+	const char* noiseTexPath = "";
 	float rotAmt = 0.0f;
-	GLuint noiseTexture;
-	const int noiseHeight = 300;
-	const int noiseWidth = 300;
-	const int noiseDepth = 300;
+	GLuint noiseTexture{};
+	const int noiseHeight = 500;
+	const int noiseWidth = 500;
+	const int noiseDepth = 500;
 	double*** noise;
 
 	void fillDataArray(GLubyte data[]);

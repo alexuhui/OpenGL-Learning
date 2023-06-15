@@ -45,4 +45,7 @@ public:
 	static float bronzeShininess();
 
 	static float toRadians(float degrees);
+
+	static bool save3DTexture(const char* path, GLubyte* data, int size, int height, int width, int depth);
+	static bool read3DTexture(const char* path, GLubyte* data, int height, int width, int depth);
 };

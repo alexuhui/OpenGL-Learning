@@ -2,6 +2,8 @@
 **/Debug/
 **/Release/
 *.vcxproj.user
+*.3dtex
+
 
 # Build results
 [Dd]ebug/

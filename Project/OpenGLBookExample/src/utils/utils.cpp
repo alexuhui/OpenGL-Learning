@@ -31,6 +31,49 @@ string Utils::readShaderFile(const char *filePath) {
 	return content;
 }
 
+bool Utils::save3DTexture(const char *path, GLubyte* data, int size, int height, int width, int depth)
+{
+	ofstream outfile;
+	outfile.open(path, ios::binary);
+	if (outfile.fail()) {
+		cout << "文件打开失败 : " << path << endl;
+		return false;
+	}
+
+	outfile.write((char*)&height, sizeof(int));
+	outfile.write((char*)&width, sizeof(int));
+	outfile.write((char*)&depth, sizeof(int));
+	outfile.write((char*)data, size);
+
+	outfile.close();
+	return true;
+}
+
+bool Utils::read3DTexture(const char* path, GLubyte* data, int height, int width, int depth)
+{
+	ifstream infile(path, ios::in);
+	if (infile.fail())
+	{
+		cout << "file read failed : " << path << endl;
+		return false;
+	}
+	int h, w, d;
+	infile.read((char*)&h, sizeof(int));
+	infile.read((char*)&w, sizeof(int));
+	infile.read((char*)&d, sizeof(int));
+	if (h != height || w != width || d != depth)
+	{
+		cout << "data error " << endl;
+		return false;
+	}
+
+	int correctSize = height * width * depth * 4;
+	infile.read((char*)data, correctSize);
+
+	infile.close();
+	return true;
+}
+
 bool Utils::checkOpenGLError() {
 	bool foundError = false;
 	int glErr = glGetError();
