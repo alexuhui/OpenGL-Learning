@@ -21,10 +21,11 @@ protected:
 private:
 	float rotAmt = 0.0f;
 	GLuint stripesTexture;
-	const int texHeight = 200;
-	const int texWidth = 200;
-	const int texDepth = 200;
+	const int texHeight = 300;
+	const int texWidth = 300;
+	const int texDepth = 300;
 	double*** tex3Dpattern;
+	const char* tex3dPath = "";
 
 	void fillDataArray(GLubyte data[]);
 	int build3DTexture();

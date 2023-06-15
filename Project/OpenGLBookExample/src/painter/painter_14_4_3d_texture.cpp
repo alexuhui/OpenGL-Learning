@@ -8,6 +8,9 @@ void Painter_14_4::init()
     frag = "./shader/s_14_4_3d_texture_frag.glsl";
 
 	model0 = "./res/model/dolphinLowPoly/dolphinLowPoly.obj";
+
+	//3d纹理
+	tex3dPath = "./res/3dtex/tex3d.3dtex";
 }
 
 void Painter_14_4::initWin(GLFWwindow* window)
@@ -31,7 +34,6 @@ void Painter_14_4::initWin(GLFWwindow* window)
 
     initVaoVbo(3);
     setupVertices(dolphinObj, 0);
-	generate3Dpattern();
 	stripesTexture = build3DTexture();
 }
 
@@ -90,13 +92,20 @@ void Painter_14_4::fillDataArray(GLubyte data[]) {
 			}
 		}
 	}
+	int size = texWidth * texHeight * texDepth * 4;
+	Utils::save3DTexture(tex3dPath, data, size, texHeight, texWidth, texDepth);
 }
 
 int Painter_14_4::build3DTexture() {
 	GLuint textureID;
 	GLubyte* data = new GLubyte[texHeight * texWidth * texDepth * 4];
 
-	fillDataArray(data);
+	if (!Utils::read3DTexture(tex3dPath, data, texHeight, texWidth, texDepth))
+	{
+		generate3Dpattern();
+		fillDataArray(data);
+	}
+		
 
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_3D, textureID);
