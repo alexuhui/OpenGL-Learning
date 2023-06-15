@@ -10,6 +10,7 @@
 #include "../utils/utils.h"
 #include "../shape/shape.h"
 #include "../model/imported_model.h"
+#include "../stopwatch/stopwatch.h"
 
 using namespace std;
 
@@ -52,6 +53,13 @@ protected:
 	virtual void installLights(int renderingProgram, glm::mat4 vMatrix, float* matAmb, float* matDif, float* matSpe, float matShi);
 	virtual void setupShadowBuffers(GLFWwindow* window);
 
+	stopwatch::Stopwatch myWatch;
+
+	inline void stopwatchStart()
+	{
+		myWatch.start();
+	}
+	virtual void stopwatch(const char* sign = "");
 
 	int width = 0, height = 0;
 	float aspect = 1.0f;
@@ -79,6 +87,8 @@ protected:
 	float lightAmbient[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	float lightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	float lightSpecular[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	// white material
+	float wMatShi = 75.0f;
 
 	// gold material
 	float* matAmb = Utils::goldAmbient();

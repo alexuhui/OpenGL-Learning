@@ -233,6 +233,11 @@ void Painter::setupShadowBuffers(GLFWwindow* window) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 }
 
+void Painter::stopwatch(const char* sign)
+{
+    std::cout << sign << " Elapsed: " << myWatch.stepElapsed() << " milliseconds." << std::endl;
+}
+
 void Painter::windowReshapeCallback(GLFWwindow* window, int width, int height)
 {
     aspect = (float)width / (float)height;

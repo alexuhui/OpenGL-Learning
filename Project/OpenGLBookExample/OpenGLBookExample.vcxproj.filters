@@ -31,6 +31,9 @@
     <Filter Include="源文件\model">
       <UniqueIdentifier>{5be6e55d-a22b-4315-8a73-0b1698fd51d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\stopwatch">
+      <UniqueIdentifier>{b783588c-9e36-4dc7-85b7-79f7044eb3fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\painter\painter.cpp">
@@ -169,6 +172,9 @@
       <Filter>源文件\painter</Filter>
     </ClCompile>
     <ClCompile Include="src\painter\painter_14_4_3d_texture.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\painter\painter_14_5_3d_texture_marble.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
   </ItemGroup>
@@ -310,6 +316,12 @@
     </ClInclude>
     <ClInclude Include="src\painter\painter_14_4_3d_texture.h">
       <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_14_5_3d_texture_marble.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stopwatch\stopwatch.h">
+      <Filter>源文件\stopwatch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -535,6 +547,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_14_4_3d_texture_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_5_3d_texture_marble_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_5_3d_texture_marble_frag.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

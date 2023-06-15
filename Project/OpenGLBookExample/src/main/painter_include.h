@@ -39,3 +39,4 @@
 #include "../painter/painter_14_2_blend.h"
 #include "../painter/painter_14_3_clip.h"
 #include "../painter/painter_14_4_3d_texture.h"
+#include "../painter/painter_14_5_3d_texture_marble.h"
