@@ -108,6 +108,12 @@ protected:
 	float* sMatSpe = Utils::silverSpecular();
 	float sMatShi = Utils::silverShininess();
 
+	// wood material
+	float wdMatAmb[4] = { 0.5f, 0.35f, 0.15f, 1.0f };
+	float wdMatDif[4] = { 0.5f, 0.35f, 0.15f, 1.0f };
+	float wdMatSpe[4] = { 0.5f, 0.35f, 0.15f, 1.0f };
+	float wdMatShi = 15.0f;
+
 	// shadow stuff
 	int scSizeX = 0, scSizeY = 0;
 	GLuint shadowTex{}, shadowBuffer{};

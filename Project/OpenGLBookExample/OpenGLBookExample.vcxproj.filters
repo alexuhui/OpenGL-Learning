@@ -177,6 +177,9 @@
     <ClCompile Include="src\painter\painter_14_5_3d_texture_marble.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_14_6_3d_texture_wood.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -322,6 +325,9 @@
     </ClInclude>
     <ClInclude Include="src\stopwatch\stopwatch.h">
       <Filter>源文件\stopwatch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_14_6_3d_texture_wood.h">
+      <Filter>源文件\painter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -553,6 +559,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_14_5_3d_texture_marble_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_6_3d_texture_wood_frag.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_6_3d_texture_wood_vert.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>
