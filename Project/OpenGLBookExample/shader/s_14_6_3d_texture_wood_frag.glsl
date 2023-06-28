@@ -32,7 +32,8 @@ uniform mat4 texRot;
 layout (binding=0) uniform sampler3D s;
 
 void main(void)
-{	// normalize the light, normal, and view vectors:
+{	
+	// normalize the light, normal, and view vectors:
 	vec3 L = normalize(varyingLightDir);
 	vec3 N = normalize(varyingNormal);
 	vec3 V = normalize(-varyingVertPos);

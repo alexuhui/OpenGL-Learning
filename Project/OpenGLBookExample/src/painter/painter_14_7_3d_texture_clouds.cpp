@@ -1,43 +1,40 @@
-﻿#include "painter_14_6_3d_texture_wood.h"
+﻿#include "painter_14_7_3d_texture_clouds.h"
 
-void Painter_14_6::init()
+void Painter_14_7::init()
 {
-    title = "Example 14.6";
+    title = "Example 14.7";
 
-    vert = "./shader/s_14_6_3d_texture_wood_vert.glsl";
-    frag = "./shader/s_14_6_3d_texture_wood_frag.glsl";
-
-	model0 = "./res/model/dolphinLowPoly/dolphinLowPoly.obj";
+    vert = "./shader/s_14_7_3d_texture_clouds_vert.glsl";
+    frag = "./shader/s_14_7_3d_texture_clouds_frag.glsl";
 
 	//3d纹理
-	noiseTexPath = "./res/3dtex/wood.3dtex";
+	noiseTexPath = "./res/3dtex/clouds.3dtex";
 }
 
-void Painter_14_6::initWin(GLFWwindow* window)
+void Painter_14_7::initWin(GLFWwindow* window)
 {
 	this->Painter::initWin(window);
 
-	cameraX = 0.0f; cameraY = 0.0f; cameraZ = 1.7f;
+	cameraX = 0.0f; cameraY = 2.0f; cameraZ = 10.0f;
 
 	renderingProgram = Utils::createShaderProgram(vert, frag);
-	dolphinObj = ImportedModel(model0);
 
 	currentLightPos = glm::vec3(-2.0f, 3.0f, 0.6f);
 	texRot = glm::rotate(glm::mat4(1.0f), Utils::toRadians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 	stopwatchStart();
 
-	initVaoVbo(3);
+	initVaoVbo(4);
 	stopwatch("initVaoVbo");
 
-	setupVertices(dolphinObj, 0);
+	setupVertices(halfSphere, 0);
 	stopwatch("setupVertices");
 	
-	noiseTexture = buildNoiseTexture();
+	skyTexture = buildNoiseTexture();
 	stopwatch("buildNoiseTexture");
 }
 
-void Painter_14_6::display(GLFWwindow* window, double currentTime)
+void Painter_14_7::display(GLFWwindow* window, double currentTime)
 {
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.5, 0.5, 0.5, 1.0);
@@ -47,62 +44,56 @@ void Painter_14_6::display(GLFWwindow* window, double currentTime)
 
 	mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
 	projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
-	nLoc = glGetUniformLocation(renderingProgram, "norm_matrix");
-	tLoc = glGetUniformLocation(renderingProgram, "texRot");
+	dOffsetLoc = glGetUniformLocation(renderingProgram, "depth");
 
 	vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraX, -cameraY, -cameraZ));
-	mMat = glm::translate(glm::mat4(1.0f), glm::vec3(-0.15f, 0.0f, 0.0f));
-	mMat = glm::rotate(mMat, Utils::toRadians(50.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+	mMat = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+	mMat = glm::scale(glm::mat4(1.0f), glm::vec3(4.0f, 4.0f, 4.0f));
+	rotAmt += 0.002f;
+	mMat = glm::rotate(mMat, rotAmt, glm::vec3(0.0f, 1.0f, 0.0f));
 	mvMat = vMat * mMat;
-	invTrMat = glm::transpose(glm::inverse(mvMat));
-	installLights(renderingProgram, vMat, wdMatAmb, wdMatDif, wdMatSpe, wdMatShi);
+
+	depth += 0.00005f; if (depth >= 0.99f) depth = 0.01f;
 
 	glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
-	glUniformMatrix4fv(nLoc, 1, GL_FALSE, glm::value_ptr(invTrMat));
-	glUniformMatrix4fv(tLoc, 1, false, glm::value_ptr(texRot));
+	glUniform1f(dOffsetLoc, depth);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(1);
 
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_3D, noiseTexture);
+	glBindTexture(GL_TEXTURE_3D, skyTexture);
 
 	glEnable(GL_CULL_FACE);
 	glFrontFace(GL_CCW);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
-	glDrawArrays(GL_TRIANGLES, 0, dolphinObj.getNumVertices());
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // FILL or LINE
+	glDrawArrays(GL_TRIANGLES, 0, halfSphere.getNumIndices());
 
 	//stopwatch("display");
 }
 
-void Painter_14_6::fillDataArray(GLubyte data[]) {
-	double xyPeriod = 40.0;
-	double turbPower = 0.1;
-	double turbSize = 32.0;
+void Painter_14_7::fillDataArray(GLubyte data[]) {
 	for (int i = 0; i < noiseHeight; i++) {
 		for (int j = 0; j < noiseWidth; j++) {
 			for (int k = 0; k < noiseDepth; k++) {
-				double xValue = (i - (double)noiseHeight / 2.0) / (double)noiseHeight;
-				double yValue = (j - (double)noiseWidth / 2.0) / (double)noiseWidth;
-				double distValue = sqrt(xValue * xValue + yValue * yValue)
-					+ turbPower * turbulence(i, j, k, turbSize) / 256.0;
-				double sineValue = 128.0 * abs(sin(2.0 * xyPeriod * distValue * 3.14159));
+				float brightness = 1.0f - (float)turbulence(i, j, k, 32) / 256.0f;
 
-				float redPortion = (float)(80 + (int)sineValue);
-				float greenPortion = (float)(30 + (int)sineValue);
-				float bluePortion = 0.0f;
+				float redPortion = brightness * 255.0f;
+				float greenPortion = brightness * 255.0f;
+				float bluePortion = 1.0f * 255.0f;
 
 				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 0] = (GLubyte)redPortion;
 				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 1] = (GLubyte)greenPortion;
 				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 2] = (GLubyte)bluePortion;
-				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 3] = (GLubyte)255;
+				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 3] = (GLubyte)0;
 			}
 		}
 	}
@@ -113,18 +104,21 @@ void Painter_14_6::fillDataArray(GLubyte data[]) {
 	stopwatch("save3DTexture");
 }
 
-double Painter_14_6::turbulence(double x, double y, double z, double size) {
-	double value = 0.0, initialSize = size;
+double Painter_14_7::turbulence(double x, double y, double z, double size) {
+	double value = 0.0, initialSize = size, cloudQuant;
 	while (size >= 0.9) {
 		value = value + smoothNoise(x / size, y / size, z / size) * size;
 		size = size / 2.0;
 	}
-	value = 128.0 * value / initialSize;
+	cloudQuant = 110.0; // tunable quantity of clouds
+	value = value / initialSize;
+	value = 256.0 * logistic(value * 128.0 - cloudQuant);
+	//value = 128.0 * value / initialSize;
 	return value;
 }
 
 // 3D Noise Texture section
-double Painter_14_6::smoothNoise(double x1, double y1, double z1) {
+double Painter_14_7::smoothNoise(double x1, double y1, double z1) {
 	//get fractional part of x, y, and z
 	double fractX = x1 - (int)x1;
 	double fractY = y1 - (int)y1;
@@ -150,7 +144,7 @@ double Painter_14_6::smoothNoise(double x1, double y1, double z1) {
 	return value;
 }
 
-GLuint Painter_14_6::buildNoiseTexture() {
+GLuint Painter_14_7::buildNoiseTexture() {
 	GLuint textureID;
 	GLubyte* data = new GLubyte[noiseHeight * noiseWidth * noiseDepth * 4];
 
@@ -174,7 +168,7 @@ GLuint Painter_14_6::buildNoiseTexture() {
 	return textureID;
 }
 
-void Painter_14_6::generateNoise() {
+void Painter_14_7::generateNoise() {
 	noise = new double** [noiseHeight];
 	for (int x = 0; x < noiseHeight; x++) {
 		noise[x] = new double* [noiseWidth];

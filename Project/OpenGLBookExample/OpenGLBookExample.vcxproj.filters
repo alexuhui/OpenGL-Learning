@@ -180,6 +180,12 @@
     <ClCompile Include="src\painter\painter_14_6_3d_texture_wood.cpp">
       <Filter>源文件\painter</Filter>
     </ClCompile>
+    <ClCompile Include="src\painter\painter_14_7_3d_texture_clouds.cpp">
+      <Filter>源文件\painter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shape\sphere_half.cpp">
+      <Filter>源文件\shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\painter\painter.h">
@@ -328,6 +334,12 @@
     </ClInclude>
     <ClInclude Include="src\painter\painter_14_6_3d_texture_wood.h">
       <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\painter\painter_14_7_3d_texture_clouds.h">
+      <Filter>源文件\painter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shape\sphere_half.h">
+      <Filter>源文件\shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -565,6 +577,12 @@
       <Filter>资源文件\shader</Filter>
     </None>
     <None Include="shader\s_14_6_3d_texture_wood_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_7_3d_texture_clouds_vert.glsl">
+      <Filter>资源文件\shader</Filter>
+    </None>
+    <None Include="shader\s_14_7_3d_texture_clouds_frag.glsl">
       <Filter>资源文件\shader</Filter>
     </None>
   </ItemGroup>

@@ -41,3 +41,4 @@
 #include "../painter/painter_14_4_3d_texture.h"
 #include "../painter/painter_14_5_3d_texture_marble.h"
 #include "../painter/painter_14_6_3d_texture_wood.h"
+#include "../painter/painter_14_7_3d_texture_clouds.h"

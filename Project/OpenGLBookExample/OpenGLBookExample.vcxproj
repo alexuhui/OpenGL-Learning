@@ -157,6 +157,7 @@
     <ClCompile Include="src\painter\painter_14_4_3d_texture.cpp" />
     <ClCompile Include="src\painter\painter_14_5_3d_texture_marble.cpp" />
     <ClCompile Include="src\painter\painter_14_6_3d_texture_wood.cpp" />
+    <ClCompile Include="src\painter\painter_14_7_3d_texture_clouds.cpp" />
     <ClCompile Include="src\painter\painter_2_1_draw_bg.cpp" />
     <ClCompile Include="src\painter\painter_2_2_draw_point.cpp" />
     <ClCompile Include="src\painter\painter_2_5_draw_triangle.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="src\painter\painter_9_3_reflection_cubemap.cpp" />
     <ClCompile Include="src\shape\shape.cpp" />
     <ClCompile Include="src\shape\sphere.cpp" />
+    <ClCompile Include="src\shape\sphere_half.cpp" />
     <ClCompile Include="src\shape\torus.cpp" />
     <ClCompile Include="src\utils\utils.cpp" />
   </ItemGroup>
@@ -218,6 +220,7 @@
     <ClInclude Include="src\painter\painter_14_4_3d_texture.h" />
     <ClInclude Include="src\painter\painter_14_5_3d_texture_marble.h" />
     <ClInclude Include="src\painter\painter_14_6_3d_texture_wood.h" />
+    <ClInclude Include="src\painter\painter_14_7_3d_texture_clouds.h" />
     <ClInclude Include="src\painter\painter_2_1_draw_bg.h" />
     <ClInclude Include="src\painter\painter_2_2_draw_point.h" />
     <ClInclude Include="src\painter\painter_2_5_draw_triangle.h" />
@@ -240,6 +243,7 @@
     <ClInclude Include="src\painter\painter_9_3_reflection_cubemap.h" />
     <ClInclude Include="src\shape\shape.h" />
     <ClInclude Include="src\shape\sphere.h" />
+    <ClInclude Include="src\shape\sphere_half.h" />
     <ClInclude Include="src\shape\torus.h" />
     <ClInclude Include="src\stopwatch\stopwatch.h" />
     <ClInclude Include="src\utils\utils.h" />
@@ -299,6 +303,8 @@
     <None Include="shader\s_14_5_3d_texture_marble_vert.glsl" />
     <None Include="shader\s_14_6_3d_texture_wood_frag.glsl" />
     <None Include="shader\s_14_6_3d_texture_wood_vert.glsl" />
+    <None Include="shader\s_14_7_3d_texture_clouds_frag.glsl" />
+    <None Include="shader\s_14_7_3d_texture_clouds_vert.glsl" />
     <None Include="shader\s_2_5_draw_triangle_vert.glsl" />
     <None Include="shader\s_2_6_draw_triangle_ani_vert.glsl" />
     <None Include="shader\s_4_1_draw_cube_frag.glsl" />

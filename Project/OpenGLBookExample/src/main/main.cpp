@@ -94,6 +94,7 @@ int main(void) {
             if (section == 4) { painter = new Painter_14_4(); draw(); continue; }
             if (section == 5) { painter = new Painter_14_5(); draw(); continue; }
             if (section == 6) { painter = new Painter_14_6(); draw(); continue; }
+            if (section == 7) { painter = new Painter_14_7(); draw(); continue; }
         }
 
         cout << "Example " << chapter << "."  << section << " not exist..." << endl;
@@ -128,6 +129,8 @@ void draw()
     //exit(EXIT_SUCCESS);
     cout << painter->getTitle() << " closed ..." << endl;
     cout << endl;
+
+   delete painter;
 }
 
 void windowReshapeCallback(GLFWwindow* win, int newWidth, int newHeight)

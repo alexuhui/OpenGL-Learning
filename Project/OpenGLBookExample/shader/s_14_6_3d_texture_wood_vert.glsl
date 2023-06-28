@@ -31,7 +31,8 @@ uniform mat4 texRot;
 layout (binding=0) uniform sampler3D s;
 
 void main(void)
-{	varyingNormal = (norm_matrix * vec4(normal,1.0)).xyz;
+{	
+	varyingNormal = (norm_matrix * vec4(normal,1.0)).xyz;
 	originalPosition = vec3(texRot * vec4(position,1.0)).xyz;
 	varyingVertPos = (mv_matrix * vec4(position,1.0)).xyz;
 	varyingLightDir = light.position - varyingVertPos;
