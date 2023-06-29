@@ -109,7 +109,7 @@ void Painter_14_6::fillDataArray(GLubyte data[]) {
 	stopwatch("fillDataArray");
 
 	int size = noiseWidth * noiseHeight * noiseDepth * 4;
-	Utils::save3DTexture(noiseTexPath, data, size, noiseHeight, noiseWidth, noiseHeight);
+	Utils::save3DTexture(noiseTexPath, data, size, noiseHeight, noiseWidth, noiseDepth);
 	stopwatch("save3DTexture");
 }
 

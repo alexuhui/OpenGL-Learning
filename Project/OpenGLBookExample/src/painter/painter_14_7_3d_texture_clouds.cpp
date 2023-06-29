@@ -90,17 +90,18 @@ void Painter_14_7::fillDataArray(GLubyte data[]) {
 				float greenPortion = brightness * 255.0f;
 				float bluePortion = 1.0f * 255.0f;
 
-				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 0] = (GLubyte)redPortion;
-				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 1] = (GLubyte)greenPortion;
-				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 2] = (GLubyte)bluePortion;
-				data[i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4 + 3] = (GLubyte)0;
+				int index = i * (noiseWidth * noiseHeight * 4) + j * (noiseHeight * 4) + k * 4;
+				data[index] = (GLubyte)redPortion;
+				data[index + 1] = (GLubyte)greenPortion;
+				data[index + 2] = (GLubyte)bluePortion;
+				data[index + 3] = (GLubyte)0;
 			}
 		}
 	}
 	stopwatch("fillDataArray");
 
 	int size = noiseWidth * noiseHeight * noiseDepth * 4;
-	Utils::save3DTexture(noiseTexPath, data, size, noiseHeight, noiseWidth, noiseHeight);
+	Utils::save3DTexture(noiseTexPath, data, size, noiseHeight, noiseWidth, noiseDepth);
 	stopwatch("save3DTexture");
 }
 

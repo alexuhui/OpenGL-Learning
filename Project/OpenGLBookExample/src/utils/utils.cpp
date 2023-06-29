@@ -36,7 +36,7 @@ bool Utils::save3DTexture(const char *path, GLubyte* data, int size, int height,
 	ofstream outfile;
 	outfile.open(path, ios::binary);
 	if (outfile.fail()) {
-		cout << "文件打开失败 : " << path << endl;
+		cout << "file write failed : " << path << endl;
 		return false;
 	}
 
@@ -51,7 +51,7 @@ bool Utils::save3DTexture(const char *path, GLubyte* data, int size, int height,
 
 bool Utils::read3DTexture(const char* path, GLubyte* data, int height, int width, int depth)
 {
-	ifstream infile(path, ios::in);
+	ifstream infile(path, ios::binary);
 	if (infile.fail())
 	{
 		cout << "file read failed : " << path << endl;
