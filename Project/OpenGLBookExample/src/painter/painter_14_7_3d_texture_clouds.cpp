@@ -49,11 +49,11 @@ void Painter_14_7::display(GLFWwindow* window, double currentTime)
 	vMat = glm::translate(glm::mat4(1.0f), glm::vec3(-cameraX, -cameraY, -cameraZ));
 	mMat = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
 	mMat = glm::scale(glm::mat4(1.0f), glm::vec3(4.0f, 4.0f, 4.0f));
-	rotAmt += 0.002f;
+	rotAmt += 0.0005f;
 	mMat = glm::rotate(mMat, rotAmt, glm::vec3(0.0f, 1.0f, 0.0f));
 	mvMat = vMat * mMat;
 
-	depth += 0.00005f; if (depth >= 0.99f) depth = 0.01f;
+	depth += 0.0001f; if (depth >= 0.99f) depth = 0.01f;
 
 	glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
